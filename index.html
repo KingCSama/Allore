@@ -87,6 +87,7 @@ button.ghost{background:#100d1c;color:#cfc3f5}
 .sl span{font-size:18px}
 .sl.on{border-color:var(--bt)}
 .slot{padding:8px 10px;margin:4px;border:4px solid var(--bd);font-size:17px}
+body.moon{--bt:#9db4ff;--ac:#cfe0ff;background:#04050c}
 .tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
 .tools button span{opacity:.75;font-weight:400}
 .nd{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0 6px 8px;border-left:2px solid var(--bd)}
@@ -94,9 +95,22 @@ button.ghost{background:#100d1c;color:#cfc3f5}
 .nd.lock{opacity:.5}
 .nd.own{border-left-color:var(--ac)}
 #pres .hud{margin-bottom:4px}
+#login{position:fixed;inset:0;background:rgba(7,5,15,.94);display:none;align-items:center;justify-content:center;z-index:60;padding:16px}
+.lbox{width:100%;max-width:380px;text-align:center}
+.lbox h1{margin-bottom:2px}
+.lbox input{display:block;width:100%;margin:8px 0;background:#07050f;border:4px solid var(--bd);color:var(--fg);font-family:Silkscreen,monospace;font-size:13px;padding:10px;box-sizing:border-box;border-radius:0}
+.lbox input:focus{outline:none;border-color:var(--bt)}
+.lbox .row{justify-content:center;margin-top:4px}
+.ctabs{display:flex;gap:8px;margin:0 0 8px}
+.ctabs button{flex:1;margin:0}
+.ctabs button.on{background:linear-gradient(135deg,#ff3d8b,#ff9f1c);color:#fff}
+#who{position:fixed;right:8px;top:8px;z-index:22;font-family:Silkscreen,monospace;font-size:11px;color:var(--mut);background:var(--pn);padding:4px 8px;box-shadow:0 -4px 0 var(--bd),0 4px 0 var(--bd),-4px 0 0 var(--bd),4px 0 0 var(--bd)}
 </style>
+<base target="_blank">
 </head>
 <body>
+<div id="login"><div class="lbox panel"><h1>Vitra Depths</h1><p class="hint">Sign in to play. Your progress is saved to your account in this browser.</p><input id="lu" placeholder="Username" maxlength="20" autocomplete="off"><input id="lp" type="password" placeholder="Password" maxlength="40"><div class="row"><button id="lin">Log in</button><button class="ghost" id="lreg">Register</button></div><p class="hint" id="lmsg"></p></div></div>
+<div id="who" style="display:none"></div>
 <button id="invtab" aria-label="Toggle inventory">INVENTORY (I)</button>
 <aside id="inv" class="panel"><h2>Inventory</h2><p class="hint">Equip up to 4 tools. Equipped slots are hotkeys 1–4. Unequipped charms do not trigger.</p><div id="slots"></div><div id="items"></div></aside>
 <div class="wrap">
@@ -117,9 +131,10 @@ button.ghost{background:#100d1c;color:#cfc3f5}
   <div class="panel"><h2>Upgrades</h2><div id="ups"></div></div>
   <div class="panel"><h2>Prunus shop</h2><p class="hint" style="margin-top:0">Pink Prunus blossoms drop from mined blocks, more often and in larger amounts the deeper you dig. Each charm has a chance to trigger every time you finish mining a block. Prunus and charms survive prestige.</p><div id="shop"></div></div>
   <div class="panel"><h2>Prestige</h2><div id="pres"></div></div>
+  <div class="panel" id="lpanel" style="display:none"><h2>Lunar shop</h2><p class="hint" style="margin-top:0">Lunar Cores come from prestiging on the Moon. These upgrades only exist here.</p><div id="lshop"></div></div>
   <div class="panel"><h2>Skill tree</h2><div id="tree"></div></div>
-  <div class="panel"><h2>Ore collection</h2><div id="col"></div></div>
-  <div class="row"><button class="ghost" id="ret">Return to surface (R)</button><button class="ghost" id="regen">Regenerate mine</button><button class="ghost" id="rst">Reset progress</button></div>
+  <div class="panel"><h2>Ore collection</h2><div class="ctabs" id="ctabs"><button data-ct="earth" class="on">Earth</button><button data-ct="moon">Moon</button></div><div id="col"></div></div>
+  <div class="row"><button class="ghost" id="ret">Return to surface (R)</button><button class="ghost" id="regen">Regenerate mine</button><button class="ghost" id="rst">Reset progress</button><button class="ghost" id="lout">Log out</button></div>
  </div>
 </div>
 <script>
@@ -135,7 +150,15 @@ const ORES=[
 {n:'Diamond',c:'#45e4f7',v:9000,r:60000,d:130,h:60},
 {n:'Mythril',c:'#7fa8ff',v:40000,r:200000,d:190,h:80},
 {n:'Void Crystal',c:'#b650ff',v:200000,r:600000,d:260,h:100},
-{n:'Allorium',c:'#ff4fd8',v:1500000,r:2000000,d:340,h:130}
+{n:'Allorium',c:'#ff4fd8',v:1500000,r:2000000,d:340,h:130},
+{n:'Basalt Shard',c:'#98a0b8',v:40,r:7,d:1,h:2},
+{n:'Ilmenite',c:'#5f7bd6',v:160,r:22,d:3,h:6},
+{n:'Lunar Glass',c:'#7fe8ff',v:650,r:80,d:10,h:12},
+{n:'Helium-3',c:'#9dffd9',v:3200,r:450,d:25,h:20},
+{n:'Moonstone',c:'#eae3ff',v:16000,r:3500,d:50,h:34},
+{n:'Starglass',c:'#ffe14d',v:90000,r:24000,d:90,h:55},
+{n:'Cratercore',c:'#ff5fa2',v:600000,r:300000,d:150,h:90},
+{n:'Selenium Heart',c:'#ae7bff',v:5000000,r:3000000,d:240,h:140}
 ];
 const UP={
 pick:{n:'Pickaxe',b:15,g:1.55,m:99,e:()=>'Dig speed '+power().toFixed(1)+'x'},
@@ -144,18 +167,19 @@ lamp:{n:'Lantern',b:25,g:1.7,m:12,e:()=>'Light radius '+rad().toFixed(1)},
 luck:{n:'Prospector luck',b:60,g:1.8,m:60,e:()=>'Rare ore odds '+luck().toFixed(1)+'x (new tiles only)'},
 haste:{n:'Boots',b:30,g:1.6,m:10,e:()=>'Move speed '+spd().toFixed(2)+'x'}
 };
-const fresh=()=>({al:0,max:0,up:{pick:0,bag:0,lamp:0,luck:0,haste:0},found:{},cores:0,tree:{},prest:0,earned:0,run:0,prunus:0,pt:{},ores:0,eq:[],eqs:[]});
+const fresh=()=>({al:0,max:0,up:{pick:0,bag:0,lamp:0,luck:0,haste:0},found:{},cores:0,tree:{},prest:0,earned:0,run:0,prunus:0,pt:{},ores:0,eq:[],eqs:[],world:0,lc:0,lprest:0,ls:{}});
 function load(){try{const j=JSON.parse(localStorage.getItem('vitra-depths-v1'));if(j&&j.up){const f=fresh();return Object.assign(f,j,{up:Object.assign(f.up,j.up)})}}catch(e){}return fresh()}
-function save(){try{localStorage.setItem('vitra-depths-v1',JSON.stringify(S))}catch(e){}}
+var USER=null;var AKEY='vitra-depths-accts-v1';
+function save(){try{localStorage.setItem('vitra-depths-v1',JSON.stringify(S));if(USER){var a=accts();if(a[USER]){a[USER].data=JSON.stringify(S);localStorage.setItem(AKEY,JSON.stringify(a))}}}catch(e){}}
 let S=load();
 const has=id=>!!S.tree[id];
-const power=()=>(1+.6*S.up.pick)*(has('steel')?1.3:1)*(1+.03*S.prest), cap=()=>10+10*S.up.bag+(has('pockets')?15:0), rad=()=>3.5+.8*S.up.lamp+(has('seismic')?2:0), luck=()=>(1+.5*S.up.luck)*(has('eye')?1.5:1)*(has('mother')?1.5:1), spd=()=>(1+.12*S.up.haste)*(has('legs')?1.25:1);
+const power=()=>(1+.6*S.up.pick)*(has('steel')?1.3:1)*(1+.03*S.prest)*(1+.1*LS('grav')), cap=()=>10+10*S.up.bag+(has('pockets')?15:0)+8*LS('pock'), rad=()=>3.5+.8*S.up.lamp+(has('seismic')?2:0)+LS('lamp'), luck=()=>(1+.5*S.up.luck)*(has('eye')?1.5:1)*(has('mother')?1.5:1)*(1+.12*LS('luck')), spd=()=>(1+.12*S.up.haste)*(has('legs')?1.25:1)*(1+.08*LS('grav'));
 const cost=k=>Math.ceil(UP[k].b*Math.pow(UP[k].g,S.up[k]));
 function fmt(n){n=Math.floor(n);if(n<10000)return n.toLocaleString('en-US');const s=['K','M','B','T','Qa'];let i=-1;while(n>=1000&&i<4){n/=1000;i++}return n.toFixed(n<10?2:n<100?1:0)+s[i]}
 let SEED=Math.floor(Math.random()*1e9);
 function hh(x,y,k){let t=(Math.imul(x,374761393)+Math.imul(y,668265263)+Math.imul(k,1442695041)+SEED)|0;t=Math.imul(t^(t>>>13),1274126177);t=Math.imul(t^(t>>>16),2246822519);t^=t>>>13;return(t>>>0)/4294967296}
 const T=new Map(),O=new Set(),D=new Set();
-function tile(x,y){const k=x+','+y;let t=T.get(k);if(t===undefined){t=-1;if(y>0){for(let i=ORES.length-1;i>=0;i--){const o=ORES[i];if(y>=o.d&&hh(x,y,i+1)<luck()*(1+(y-o.d)/150)/o.r){t=i;break}}}T.set(k,t)}return t}
+function tile(x,y){const k=x+','+y;let t=T.get(k);if(t===undefined){t=-1;if(y>0){{const wr=WR();for(let i=wr[1];i>=wr[0];i--){const o=ORES[i];if(y>=o.d&&hh(x,y,i+1)<luck()*(1+(y-o.d)/150)/o.r){t=i;break}}}}T.set(k,t)}return t}
 const isOpen=(x,y)=>y<=0||O.has(x+','+y);
 let bag=ORES.map(()=>0);
 const bagN=()=>bag.reduce((a,b)=>a+b,0), oreV=i=>ORES[i].v*(has('lode')&&ORES[i].r>=1800?2:1), bagV=()=>Math.floor(bag.reduce((a,n,i)=>a+n*oreV(i),0)*(has('roots')?1.25:1)*pm());
@@ -168,7 +192,9 @@ function sell(){const n=bagN();if(!n)return;const v=bagV();S.al+=v;S.earned+=v;b
 function arrive(){reveal();if(P.y>S.max)S.max=P.y;if(P.y>S.run)S.run=P.y;if(P.y>best.y)best={x:P.x,y:P.y};if(P.y<=0)sell()}
 function ret(){P.x=0;P.y=0;dig=null;arrive()}
 function renderUp(){$('ups').innerHTML=Object.keys(UP).map(k=>{const u=UP[k],mx=S.up[k]>=u.m;return'<div class="up"><div><strong>'+u.n+' · Lv '+S.up[k]+'</strong><p>'+u.e()+'</p></div><button data-k="'+k+'"'+(mx||S.al<cost(k)?' disabled':'')+'>'+(mx?'Max':fmt(cost(k)))+'</button></div>'}).join('')}
-function renderCol(){$('col').innerHTML=ORES.map((o,i)=>{const f=S.found[i]||0;return'<div class="ore'+(f?'':' lock')+'"><i style="background:url('+ico(i)+') center/contain no-repeat"></i><div>'+(f?o.n:'???')+'</div><span>1 in '+o.r.toLocaleString('en-US')+' · '+fmt(o.v)+'</span><em>'+f+'</em></div>'}).join('')}
+var colTab='earth';
+function renderCol(){const lo=colTab=='moon'?12:0,hi=colTab=='moon'?ORES.length-1:11;let h='';for(let i=lo;i<=hi;i++){const o=ORES[i],f=S.found[i]||0;h+='<div class="ore'+(f?'':' lock')+'"><i style="background:url('+ico(i)+') center/contain no-repeat"></i><div>'+(f?o.n:'???')+'</div><span>1 in '+o.r.toLocaleString('en-US')+' · '+fmt(o.v)+'</span><em>'+f+'</em></div>'}$('col').innerHTML=h}
+$('ctabs').onclick=function(e){var b=e.target.closest('[data-ct]');if(!b)return;colTab=b.dataset.ct;Array.prototype.forEach.call($('ctabs').children,function(x){x.classList.toggle('on',x.dataset.ct===colTab)});renderCol()};
 $('ups').onclick=e=>{const k=e.target.dataset&&e.target.dataset.k;if(!k)return;const c=cost(k);if(S.al>=c&&S.up[k]<UP[k].m){S.al-=c;S.up[k]++;save();renderUp();reveal()}};
 $('ret').onclick=ret;
 let rs=0;$('rst').onclick=()=>{if(!rs){rs=1;$('rst').textContent='Click again to wipe';setTimeout(()=>{rs=0;$('rst').textContent='Reset progress'},2500)}else{S=fresh();bag=ORES.map(()=>0);T.clear();O.clear();D.clear();best={x:0,y:0};save();ret();renderUp();renderCol();renderTree();renderTools();renderInv();rs=0;$('rst').textContent='Reset progress'}};
@@ -212,11 +238,11 @@ function draw(){
   const open=O.has(k),band=ty/60,b0=BIO[Math.floor(band)%7],b1=BIO[(Math.floor(band)+1)%7],bf=band-Math.floor(band),hue=bf>.85?b0+(b1-b0)*(bf-.85)/.15:b0;
   if(open){g.fillStyle='hsl('+hue+',45%,8%)';g.fillRect(sx,sy,TS,TS)}
   else{
-   g.drawImage(rock(Math.round(hue/5)*5,Math.floor(hh(tx,ty,40)*4)),sx,sy,TS,TS);if(0){
+   g.drawImage(rock(S.world?580+Math.floor(band)%3*4:Math.round(hue/5)*5,Math.floor(hh(tx,ty,40)*4)),sx,sy,TS,TS);if(0){
    for(let i=0;i<4;i++){g.fillStyle=hh(tx,ty,41+i)>.5?'rgba(255,255,255,.12)':'rgba(0,0,0,.18)';g.fillRect(sx+2+Math.floor(hh(tx,ty,45+i)*(TS-8)),sy+2+Math.floor(hh(tx,ty,50+i)*(TS-8)),4+i%2*2,3)}
    g.fillStyle='rgba(255,255,255,.14)';g.fillRect(sx,sy,TS,2);g.fillRect(sx,sy,2,TS)}
    g.fillStyle='rgba(0,0,0,.18)';g.fillRect(sx,sy+TS-2,TS,2);g.fillRect(sx+TS-2,sy,2,TS);
-   if(ty==1){for(let i=0;i<16;i++){const gh=8+Math.floor(hh(tx*16+i,0,80)*3)*4;g.fillStyle='#2fbf4f';g.fillRect(sx+i*4,sy,4,gh);g.fillStyle='#7be36a';g.fillRect(sx+i*4,sy,4,4)}}
+   if(ty==1){for(let i=0;i<16;i++){const gh=8+Math.floor(hh(tx*16+i,0,80)*3)*4;g.fillStyle=S.world?'#9aa0b8':'#2fbf4f';g.fillRect(sx+i*4,sy,4,gh);g.fillStyle=S.world?'#d6daea':'#7be36a';g.fillRect(sx+i*4,sy,4,4)}}
    const t=T.get(k);
    if(t>=0){drawOre2(t,sx,sy,tm,tx,ty)}if(false){const o=ORES[t],mx=sx+TS/2,my=sy+TS/2,s=7;
     g.save();if(o.r>=1800){g.shadowColor=o.c;g.shadowBlur=14}
@@ -270,8 +296,8 @@ const TREE=[
 {id:'legs',n:'Quick Legs',d:'+25% move speed',c:3,req:'pockets',lv:2},
 {id:'elevu',n:'Elevator',d:'Unlocks Elevator (4): jump to your deepest point',c:4,req:'legs',lv:3},
 {id:'eff',n:'Efficient Tools',d:'Tool cooldowns 30% shorter',c:6,req:'elevu',lv:4}];
-const gain=()=>Math.floor(Math.sqrt(S.earned/1500)+S.run/60);
-const need=()=>Math.round(150*(1+.5*S.prest)), pm=()=>1+.05*S.prest;
+const gain=()=>S.world?Math.floor(Math.sqrt(S.earned/60000)+S.run/50):Math.floor(Math.sqrt(S.earned/1500)+S.run/60);
+const need=()=>Math.round((S.world?220:150)*(1+.5*(S.world?S.lprest:S.prest))), pm=()=>(1+.05*S.prest)*(1+.04*S.lprest)*(1+.2*LS('forge'));
 function collect(t){bag[t]++;S.ores++;if(Math.random()<ch('midas')){bag[t]++;fx(P.x,P.y-1,'#ffd23f',4)}const first=!S.found[t];S.found[t]=(S.found[t]||0)+1;if(first||ORES[t].r>=1800){renderCol();toast((first?'First ':'')+ORES[t].n+' found! 1 in '+ORES[t].r.toLocaleString('en-US'),ORES[t].c,2400)}}
 function breakAt(x,y){if(y<1||isOpen(x,y))return;const t=tile(x,y);if(t>=0){if(bagN()>=cap())return;collect(t)}O.add(x+','+y)}
 function useTool(id){
@@ -286,24 +312,25 @@ function renderTools(){$('tools').innerHTML=TOOLS.filter(q=>has(q.req)).map(q=>'
 $('tools').onclick=e=>{const b=e.target.closest('button');if(b)useTool(b.dataset.t)};
 function renderTree(){$('tree').innerHTML=TREE.map(n=>{const own=has(n.id),av=!n.req||has(n.req),ok=!own&&av&&S.cores>=n.c;return'<div class="nd'+(own?' own':av?'':' lock')+'" style="margin-left:'+n.lv*14+'px"><div><strong>'+n.n+'</strong><p>'+n.d+(av||own?'':' · needs '+TREE.find(q=>q.id==n.req).n)+'</p></div><button data-n="'+n.id+'"'+(ok?'':' disabled')+'>'+(own?'Owned':n.c+' Cores')+'</button></div>'}).join('')}
 $('tree').onclick=e=>{const id=e.target.dataset&&e.target.dataset.n;const n=TREE.find(q=>q.id==id);if(!n||has(id)||S.cores<n.c||(n.req&&!has(n.req)))return;S.cores-=n.c;S.tree[id]=1;save();renderTree();renderTools();renderUp();reveal()};
-function renderPres(){$('pres').innerHTML='<div class="hud"><div><b id="pc">0</b><span>Deep Cores</span></div><div><b id="pn">0</b><span>Prestiges</span></div></div><p class="hint">Reset your Allores, upgrades and depth to earn Deep Cores. Earning more and digging deeper in a run gives more Cores. Your ore collection and skill tree are kept.</p><p class="hint" id="pq"></p><button id="pb">Prestige</button>'}
-$('pres').onclick=e=>{if(e.target.id!='pb')return;const g=gain();if(g<1||S.ores<need())return;if(!pconf){pconf=1;setTimeout(()=>pconf=0,3000);return}
- pconf=0;S.cores+=g;S.prest++;S.ores=0;S.al=0;S.earned=0;S.run=0;S.up=fresh().up;if(has('head')){S.up.pick=2;S.up.bag=2;S.up.lamp=2}
- bag=ORES.map(()=>0);T.clear();O.clear();D.clear();best={x:0,y:0};for(const k in cds)cds[k]=0;dig=null;P.vx=0;P.vy=0;ret();save();renderUp();renderTree();toast('Prestiged! +'+g+' Deep Cores','#ffb347',2400)};
+function renderPres(){$('pres').innerHTML='<div class="hud"><div><b id="pc">0</b><span id="pcl">Deep Cores</span></div><div><b id="pn">0</b><span>Prestiges</span></div></div><p class="hint">Reset your Allores, upgrades and depth to earn Cores (Deep Cores on Earth, Lunar Cores on the Moon). Earning more and digging deeper in a run gives more Cores. Your ore collection and skill tree are kept.</p><p class="hint" id="pq"></p><button id="pb">Prestige</button><button id="travel"></button>'}
+$('pres').onclick=e=>{if(e.target.id=='travel'){travel();return}if(e.target.id!='pb')return;const g=gain();if(g<1||S.ores<need())return;if(!pconf){pconf=1;setTimeout(()=>pconf=0,3000);return}
+ pconf=0;if(S.world){S.lc+=g;S.lprest++}else{S.cores+=g;S.prest++}S.ores=0;S.al=0;S.earned=0;S.run=0;S.up=fresh().up;if(has('head')){S.up.pick=2;S.up.bag=2;S.up.lamp=2}{const hs=LS('head')*3;if(hs){S.up.pick=Math.max(S.up.pick,hs);S.up.bag=Math.max(S.up.bag,hs);S.up.lamp=Math.max(S.up.lamp,hs)}}
+ bag=ORES.map(()=>0);T.clear();O.clear();D.clear();best={x:0,y:0};for(const k in cds)cds[k]=0;dig=null;P.vx=0;P.vy=0;ret();save();renderUp();renderTree();toast('Prestiged! +'+g+(S.world?' Lunar Cores':' Deep Cores'),'#ffb347',2400)};
 function hud2(){
- const g=gain(),ok=g>=1&&S.ores>=need();$('pc').textContent=S.cores;$('pn').textContent=S.prest;const b=$('pb');b.disabled=!ok;b.textContent=pconf?'Click again to confirm':(S.ores<need()?'Mine '+(need()-S.ores)+' more ores':g<1?'Earn more to prestige':'Prestige for '+g+' Cores');
+ const g=gain(),ok=g>=1&&S.ores>=need();$('pc').textContent=S.world?S.lc:S.cores;$('pn').textContent=S.world?S.lprest:S.prest;$('pcl').textContent=S.world?'Lunar Cores':'Deep Cores';{const tb=$('travel');tb.textContent=S.world?'Return to Earth':(S.prest>=10?'Travel to the Moon':'Moon: '+S.prest+'/10 prestiges');tb.disabled=!S.world&&S.prest<10}const b=$('pb');b.disabled=!ok;b.textContent=pconf?'Click again to confirm':(S.ores<need()?'Mine '+(need()-S.ores)+' more ores':g<1?'Earn more to prestige':'Prestige for '+g+' Cores');
  $('pq').textContent='Ores mined this run: '+S.ores+' / '+need()+'. Your prestige bonus: +'+Math.round((pm()-1)*100)+'% sales and +'+S.prest*3+'% dig speed (each prestige adds +5% and +3%; the ore requirement grows by 75 each time).';
  TOOLS.forEach(q=>{const e=$('cd-'+q.id);if(e)e.textContent=cds[q.id]>0?Math.ceil(cds[q.id])+'s':'ready'});
  $('pr').textContent=fmt(S.prunus);
- if(++fc%20==0){autoEq();const a=Object.values(S.found).join(),b=S.cores+Object.keys(S.tree).join(),c=S.prunus+JSON.stringify(S.pt);if(a!==sgn.c){sgn.c=a;renderCol()}if(b!==sgn.t){sgn.t=b;renderTree()}if(c!==sgn.s){sgn.s=c;renderShop();renderInv()}}
+ if(++fc%20==0){autoEq();const ls0=S.lc+JSON.stringify(S.ls)+S.world;if(ls0!==sgn.l){sgn.l=ls0;renderLS();applyWorld()}const a=Object.values(S.found).join(),b=S.cores+Object.keys(S.tree).join(),c=S.prunus+JSON.stringify(S.pt);if(a!==sgn.c){sgn.c=a;renderCol()}if(b!==sgn.t){sgn.t=b;renderTree()}if(c!==sgn.s){sgn.s=c;renderShop();renderInv()}}
 }
 const sgn={c:'',t:'',s:''};
 const PT={
-bomb:{n:'Pixel Bomb',d:'Blows up a 3×3 area',b:10,g:1.6,m:25,p:l=>.05+.015*l},
-rip:{n:'Ripper',d:'Bores 6 tiles ahead',b:20,g:1.6,m:25,p:l=>.04+.012*l},
+bomb:{n:'Pixel Bomb',d:'Blows up a 3×3 area',b:10,g:1.6,m:6,cap:.0625,p:l=>.05+.0025*l},
+rip:{n:'Ripper',d:'Bores 6 tiles ahead',b:20,g:1.6,m:10,cap:.0485,p:l=>.04+.00095*l},
 bloom:{n:'Prunus Bloom',d:'Drops bonus Prunus',b:15,g:1.6,m:25,p:l=>.03+.012*l},
 midas:{n:'Midas Touch',d:'Collected ores are duplicated',b:35,g:1.65,m:25,p:l=>.06+.02*l},
-quake:{n:'Quake',d:'Shatters a 6×2 strip (6 wide, 2 tall)',b:60,g:1.7,m:20,p:l=>.01+.006*l}};
+quake:{n:'Quake',d:'Shatters a 6×2 strip (6 wide, 2 tall)',b:60,g:1.7,m:20,p:l=>.01+.006*l},
+star:{n:'Star',d:'Mines a star shape around you',b:45,g:1.65,m:11,cap:.0775,p:l=>.04+.00375*l}};
 const ch=k=>S.eq.includes(k)?chq(k):0;
 const BIO=[28,205,160,275,330,8,185];
 function pol(pts,fill){g.fillStyle=fill;g.beginPath();pts.forEach((p,i)=>i?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1]));g.closePath();g.fill()}
@@ -451,7 +478,7 @@ function drawOre2(t,sx,sy,tm,tx,ty){
  if(t==10){g.fillStyle='#f0d0ff';for(let i=0;i<3;i++){const a=tm*1.6+i*2.1;g.fillRect(Math.round((sx+TS/2+Math.cos(a)*26)/4)*4,Math.round((sy+TS/2+Math.sin(a)*22)/4)*4,4,4)}}
 }
 function rock(h,v){const k='r'+h+'|'+v;if(SPR[k])return SPR[k];
- const c=document.createElement('canvas');c.width=c.height=32;const x=c.getContext('2d'),rr=rg(h*13+v*7+1),T=[0,1,2,3,4].map(i=>'hsl('+h+','+(50+i*2)+'%,'+(15+i*8)+'%)'),gd=[];
+ const c=document.createElement('canvas');c.width=c.height=32;const x=c.getContext('2d'),rr=rg(h*13+v*7+1),T=[0,1,2,3,4].map(i=>'hsl('+h+','+(h>=500?9:50+i*2)+'%,'+(15+i*8)+'%)'),gd=[];
  for(let i=0;i<64;i++)gd.push(rr());
  for(let y=0;y<32;y++)for(let X=0;X<32;X++){let i=1+Math.floor(gd[(y>>2)*8+(X>>2)]*3);const n=rr();if(n<.1)i--;else if(n>.92)i++;if(X<2||y<2)i=4;else if(X>29||y>29)i=0;x.fillStyle=T[Math.max(0,Math.min(4,i))];x.fillRect(X,y,1,1)}
  x.fillStyle=T[0];for(let i=0;i<2;i++){let cx=4+(rr()*22|0),cy=4+(rr()*22|0);for(let j=0;j<6;j++){x.fillRect(cx,cy,2,1);cx+=rr()<.5?1:2;cy+=rr()<.5?0:1}}
@@ -501,7 +528,7 @@ function minerSpr(){
  else{const aR=mv?-Math.round(co*4):Math.round(-s);R(25+L,12+B+aR,2,12,WD);R(22+L,10+B+aR,8,3,ME);R(22+L,10+B+aR,8,1,'#f0f6ff');R(23+L,21+B+aR,3,6,'#2d7dff');R(23+L,26+B+aR,4,3,SK)}
  return c}
 $('regen').onclick=()=>{SEED=Math.floor(Math.random()*1e9);T.clear();O.clear();D.clear();best={x:0,y:0};dig=null;dirs=[];P.vx=0;P.vy=0;ret();toast('New mine generated','#35d6ff',1600)};
-const chq=k=>{const l=S.pt[k]||0;return l?Math.min(.6,PT[k].p(l-1)):0};
+const chq=k=>{const l=S.pt[k]||0;return l?Math.min(PT[k].cap||.6,PT[k].p(l-1)):0};
 const ITEMS=[
 {id:'dyn',n:'Dynamite',t:()=>'Active · clears a 5×5 area',own:()=>has('blast'),lk:'Unlock in the skill tree'},
 {id:'drill',n:'Drill beam',t:()=>'Active · bores 10 tiles ahead',own:()=>has('drillu'),lk:'Unlock in the skill tree'},
@@ -517,21 +544,76 @@ function autoEq(){let c=false;ITEMS.forEach(q=>{if(q.own()&&!S.eqs.includes(q.id
 $('inv').onclick=e=>{const b=e.target.closest('[data-e],[data-u]');if(!b)return;const id=b.dataset.e||b.dataset.u;if(!id)return;const i=S.eq.indexOf(id);if(i>=0)S.eq.splice(i,1);else if(S.eq.length<4&&ITEMS.find(q=>q.id==id).own())S.eq.push(id);save();renderInv();renderTools()};
 $('invtab').onclick=()=>$('inv').classList.toggle('open');
 renderInv();
+const WR=()=>S.world?[12,ORES.length-1]:[0,11];
+const LS=k=>(S.ls&&S.ls[k])||0;
+const LSH={
+forge:{n:'Moon Forge',d:'+20% Allores from sales',b:2,g:1.55,m:10},
+grav:{n:'Low Gravity',d:'+10% dig speed and +8% move speed',b:2,g:1.5,m:10},
+lamp:{n:'Earthshine Lantern',d:'+1 light radius',b:3,g:1.7,m:5},
+pock:{n:'Helium Pockets',d:'+8 bag capacity',b:2,g:1.45,m:10},
+luck:{n:'Selenite Luck',d:'+12% rare ore odds',b:4,g:1.6,m:10},
+prunus:{n:'Moonbloom',d:'+25% Prunus from drops',b:3,g:1.6,m:6},
+head:{n:'Lunar Head Start',d:'Runs begin with Pickaxe, Backpack and Lantern at Lv 3 per level',b:6,g:2.2,m:3}};
+function renderLS(){$('lshop').innerHTML=Object.keys(LSH).map(k=>{const t=LSH[k],l=LS(k),c=Math.ceil(t.b*Math.pow(t.g,l)),mx=l>=t.m;return'<div class="up"><div><strong>'+t.n+' · Lv '+l+'</strong><p>'+t.d+'</p></div><button data-l="'+k+'"'+(mx||S.lc<c?' disabled':'')+'>'+(mx?'Max':c+' Lunar Cores')+'</button></div>'}).join('')}
+$('lshop').onclick=e=>{const k=e.target.dataset&&e.target.dataset.l;if(!k)return;const t=LSH[k],l=LS(k),c=Math.ceil(t.b*Math.pow(t.g,l));if(l>=t.m||S.lc<c)return;S.lc-=c;S.ls[k]=l+1;save();renderLS();reveal()};
+function applyWorld(){$('lpanel').style.display=S.world?'':'none';document.body.classList.toggle('moon',!!S.world)}
+function travel(){if(!S.world&&S.prest<10)return;S.world=S.world?0:1;SEED=Math.floor(Math.random()*1e9);T.clear();O.clear();D.clear();best={x:0,y:0};dig=null;dirs=[];P.vx=0;P.vy=0;for(const k in cds)cds[k]=0;ret();applyWorld();renderLS();renderCol();save();toast(S.world?'Welcome to the Moon!':'Back on Earth','#cfd8ff',2400)}
+const _da=drawArt;drawArt=function(x,t,v){return _da(x,(t==12||t==13)?t-11:t,v+(t>=12?5:0))};
+applyWorld();renderLS();
 const PF=[],FL=[];
 function fx(x,y,c,n){for(let i=0;i<n;i++){const a=Math.random()*6.28,s=1.5+Math.random()*3;PF.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:.35+Math.random()*.3,c})}}
 function boom(x,y,c,r){for(let dx=-r;dx<=r;dx++)for(let dy=-r;dy<=r;dy++){FL.push({x:x+dx,y:y+dy,l:.2+Math.random()*.1});fx(x+dx,y+dy,c,3)}}
 function updFx(dt){for(const p of PF){p.x+=p.vx*dt;p.y+=p.vy*dt;p.l-=dt}for(const f of FL)f.l-=dt;for(let i=PF.length-1;i>=0;i--)if(PF[i].l<=0)PF.splice(i,1);for(let i=FL.length-1;i>=0;i--)if(FL[i].l<=0)FL.splice(i,1)}
 function area(x,y,r){for(let dx=-r;dx<=r;dx++)for(let dy=-r;dy<=r;dy++)breakAt(x+dx,y+dy)}
 function procs(x,y,d){
- if(Math.random()<.04){S.prunus+=1+Math.floor(y/40);fx(x,y,'#ff9ecb',5)}
+ if(Math.random()<.04){S.prunus+=Math.round((1+Math.floor(y/40))*(1+.25*LS('prunus')));fx(x,y,'#ff9ecb',5)}
  if(Math.random()<ch('bomb')){area(x,y,1);boom(x,y,'#ff8a3d',1)}
  if(Math.random()<ch('quake')){for(let dx=-3;dx<=2;dx++)for(let dy=0;dy<=1;dy++){breakAt(x+dx,y+dy);FL.push({x:x+dx,y:y+dy,l:.2+Math.random()*.1});fx(x+dx,y+dy,'#ffd23f',3)}}
+ if(Math.random()<ch('star')){const c=[[0,0]];for(let i=1;i<=3;i++)c.push([i,0],[-i,0],[0,i],[0,-i]);for(let i=1;i<=2;i++)c.push([i,i],[-i,i],[i,-i],[-i,-i]);c.forEach(q=>{breakAt(P.x+q[0],P.y+q[1]);FL.push({x:P.x+q[0],y:P.y+q[1],l:.2+Math.random()*.1});fx(P.x+q[0],P.y+q[1],'#ffe14d',3)})}
  if(Math.random()<ch('rip')){for(let i=1;i<=6;i++){breakAt(x+d[0]*i,y+d[1]*i);fx(x+d[0]*i,y+d[1]*i,'#7fd6ff',2)}}
  if(Math.random()<ch('bloom')){S.prunus+=2+Math.floor(y/30);fx(x,y,'#ff9ecb',12)}
 }
 function renderShop(){$('shop').innerHTML=Object.keys(PT).map(k=>{const t=PT[k],l=S.pt[k]||0,mx=l>=t.m,c=Math.ceil(t.b*Math.pow(t.g,l));return'<div class="up"><div><strong>'+t.n+' · Lv '+l+'</strong><p>'+t.d+' · '+(l?(chq(k)*100).toFixed(1)+'% per block'+(S.eq.includes(k)?'':' · not equipped'):'not owned')+'</p></div><button data-p="'+k+'"'+(mx||S.prunus<c?' disabled':'')+'>'+(mx?'Max':fmt(c)+' Prunus')+'</button></div>'}).join('')}
 $('shop').onclick=e=>{const k=e.target.dataset&&e.target.dataset.p;if(!k)return;const t=PT[k],l=S.pt[k]||0,c=Math.ceil(t.b*Math.pow(t.g,l));if(l>=t.m||S.prunus<c)return;S.prunus-=c;S.pt[k]=l+1;save();renderShop()};
 renderPres();renderTools();renderTree();renderUp();renderCol();renderShop();reveal();
+/* ===== CONSOLE CHEATS (devtools → Console) ===== */
+function cheatRefresh(){renderUp();renderTree();renderTools();renderShop();renderInv();renderCol();renderLS();reveal()}
+function giveAllores(n){S.al+=Math.max(0,Math.floor(n||0));S.earned+=Math.max(0,Math.floor(n||0));cheatRefresh();return'Allores: '+fmt(S.al)}
+function givePrestiges(n){S.prest+=Math.max(0,Math.floor(n||0));cheatRefresh();return'Prestiges: '+S.prest}
+function giveCores(n){S.cores+=Math.max(0,Math.floor(n||0));cheatRefresh();return'Deep Cores: '+S.cores}
+function giveLunarCores(n){S.lc+=Math.max(0,Math.floor(n||0));cheatRefresh();return'Lunar Cores: '+S.lc}
+function givePrunus(n){S.prunus+=Math.max(0,Math.floor(n||0));cheatRefresh();return'Prunus: '+fmt(S.prunus)}
+function maxUpgrades(){for(const k in UP)S.up[k]=UP[k].m;cheatRefresh();return'All upgrades maxed'}
+function unlockTree(){TREE.forEach(n=>S.tree[n.id]=1);cheatRefresh();return'Skill tree fully unlocked'}
+function maxCharms(){for(const k in PT)S.pt[k]=PT[k].m;cheatRefresh();return'All charms maxed'}
+function collectAll(){ORES.forEach((o,i)=>S.found[i]=99);renderCol();return'Ore collection complete'}
+function fillBag(t){const i=(t==null?0:Math.max(0,Math.min(ORES.length-1,Math.floor(t))));const n=cap()-bagN();if(n>0)bag[i]+=n;return'Bag filled: '+bagN()+'/'+cap()}
+function goDepth(n){n=Math.max(0,Math.floor(n||0));P.x=0;P.y=n;dig=null;arrive();return'Now at depth '+P.y}
+function unlockMoon(){S.prest=Math.max(S.prest,10);cheatRefresh();return'Moon travel unlocked (10+ prestiges)'}
+function moon(){if(!S.world&&S.prest<10)S.prest=10;S.world=S.world?0:1;SEED=Math.floor(Math.random()*1e9);T.clear();O.clear();D.clear();best={x:0,y:0};dig=null;dirs=[];P.vx=0;P.vy=0;for(const k in cds)cds[k]=0;ret();applyWorld();renderLS();renderCol();cheatRefresh();return S.world?'Now on the Moon':'Back on Earth'}
+function cheatGod(){maxUpgrades();unlockTree();maxCharms();S.prest+=10;cheatRefresh();return'God mode: all upgrades, tree, charms +10 prestiges'}
+/* ================================================ */
+/* ===== LOGIN / ACCOUNT SAVING ===== */
+function accts(){try{return JSON.parse(localStorage.getItem(AKEY))||{}}catch(e){return{}}}
+function keepA(a){try{localStorage.setItem(AKEY,JSON.stringify(a))}catch(e){}}
+function pwh(s){var h=5381;for(var i=0;i<s.length;i++)h=Math.imul(h,33)+s.charCodeAt(i)|0;return(h>>>0).toString(36)}
+function lmsg(t){$('lmsg').textContent=t}
+function showLogin(t){$('login').style.display='flex';if(t)lmsg(t);$('lp').value=''}
+function hideLogin(){$('login').style.display='none'}
+function enterGame(data){var f=fresh();if(data){try{var j=JSON.parse(data);S=Object.assign(f,j,{up:Object.assign(f.up,j.up||{})})}catch(e){S=f}}else S=f;
+bag=ORES.map(function(){return 0});T.clear();O.clear();D.clear();best={x:0,y:0};dig=null;dirs=[];P.vx=0;P.vy=0;for(var k in cds)cds[k]=0;
+applyWorld();renderPres();renderTools();renderTree();renderUp();renderCol();renderShop();renderInv();renderLS();ret();
+$('who').style.display='';$('who').textContent='Logged in: '+USER;hideLogin()}
+function tryLogin(){var u=$('lu').value.trim(),p=$('lp').value,a=accts();if(!u||!p){lmsg('Enter a username and password.');return}if(!a[u]){lmsg('No account with that name — click Register to create it.');return}if(a[u].pass!==pwh(p)){lmsg('Wrong password.');return}USER=u;try{localStorage.setItem('vitra-depths-sess',u)}catch(e){}enterGame(a[u].data)}
+function tryReg(){var u=$('lu').value.trim(),p=$('lp').value,a=accts();if(!u||!p){lmsg('Enter a username and password.');return}if(a[u]){lmsg('That username is taken — log in instead.');return}if(u.length<3){lmsg('Username must be at least 3 characters.');return}a[u]={pass:pwh(p),data:JSON.stringify(fresh())};keepA(a);USER=u;try{localStorage.setItem('vitra-depths-sess',u)}catch(e){}enterGame(a[u].data)}
+$('lin').onclick=tryLogin;
+$('lreg').onclick=tryReg;
+$('lp').addEventListener('keydown',function(e){if(e.key==='Enter')tryLogin()});
+$('lu').addEventListener('keydown',function(e){if(e.key==='Enter')tryLogin()});
+$('lout').onclick=function(){save();USER=null;try{localStorage.removeItem('vitra-depths-sess');localStorage.removeItem('vitra-depths-v1')}catch(e){}$('who').style.display='none';showLogin('Logged out. Progress saved to your account.')};
+(function(){var sess=null;try{sess=localStorage.getItem('vitra-depths-sess')}catch(e){}
+if(sess){var a=accts();if(a[sess]&&a[sess].data){USER=sess;enterGame(a[sess].data);return}}
+showLogin()})();
 addEventListener('beforeunload',save);
 requestAnimationFrame(loop);
 </script>
