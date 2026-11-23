@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Allore Depths</title>
+<title>Vitra Depths</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=VT323&display=swap">
 <style>
@@ -101,7 +101,7 @@ button.ghost{background:#100d1c;color:#cfc3f5}
 <aside id="inv" class="panel"><h2>Inventory</h2><p class="hint">Equip up to 4 tools. Equipped slots are hotkeys 1–4. Unequipped charms do not trigger.</p><div id="slots"></div><div id="items"></div></aside>
 <div class="wrap">
  <div class="main">
-  <h1>Allore Depths</h1>
+  <h1>Vitra Depths</h1>
   <div class="hud">
    <div><b id="al">0</b><span>Allores</span></div>
    <div><b id="dp">0 m</b><span>Depth (best <span id="mx" style="display:inline">0</span> m)</span></div>
@@ -145,8 +145,8 @@ luck:{n:'Prospector luck',b:60,g:1.8,m:60,e:()=>'Rare ore odds '+luck().toFixed(
 haste:{n:'Boots',b:30,g:1.6,m:10,e:()=>'Move speed '+spd().toFixed(2)+'x'}
 };
 const fresh=()=>({al:0,max:0,up:{pick:0,bag:0,lamp:0,luck:0,haste:0},found:{},cores:0,tree:{},prest:0,earned:0,run:0,prunus:0,pt:{},ores:0,eq:[],eqs:[]});
-function load(){try{const j=JSON.parse(localStorage.getItem('allore-depths-v1'));if(j&&j.up){const f=fresh();return Object.assign(f,j,{up:Object.assign(f.up,j.up)})}}catch(e){}return fresh()}
-function save(){try{localStorage.setItem('allore-depths-v1',JSON.stringify(S))}catch(e){}}
+function load(){try{const j=JSON.parse(localStorage.getItem('vitra-depths-v1'));if(j&&j.up){const f=fresh();return Object.assign(f,j,{up:Object.assign(f.up,j.up)})}}catch(e){}return fresh()}
+function save(){try{localStorage.setItem('vitra-depths-v1',JSON.stringify(S))}catch(e){}}
 let S=load();
 const has=id=>!!S.tree[id];
 const power=()=>(1+.6*S.up.pick)*(has('steel')?1.3:1)*(1+.03*S.prest), cap=()=>10+10*S.up.bag+(has('pockets')?15:0), rad=()=>3.5+.8*S.up.lamp+(has('seismic')?2:0), luck=()=>(1+.5*S.up.luck)*(has('eye')?1.5:1)*(has('mother')?1.5:1), spd=()=>(1+.12*S.up.haste)*(has('legs')?1.25:1);
