@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vitra Depths</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=VT323&display=swap">
+<style>
+:root{--bg:#0e0a1f;--fg:#f3ecff;--pn:#1a1233;--bd:#43307a;--mut:#a99bd6;--ac:#ffb02e;--bt:#ff4fa3;--bf:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0a1f;--fg:#f3ecff;--pn:#1a1233;--bd:#43307a;--mut:#a99bd6;--ac:#ffb02e;--bt:#ff4fa3;--bf:#fff}}
+:root[data-theme="dark"]{--bg:#0e0a1f;--fg:#f3ecff;--pn:#1a1233;--bd:#43307a;--mut:#a99bd6;--ac:#ffb02e;--bt:#ff4fa3;--bf:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.4 Barlow,system-ui,sans-serif}
+.wrap{display:flex;flex-wrap:wrap;gap:16px;padding:16px;max-width:1100px;margin:0 auto}
+.main{flex:1 1 560px;min-width:0}
+.side{flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:12px}
+h1{font:700 28px/1 'Barlow Condensed',sans-serif;margin:0 0 10px;letter-spacing:.02em}
+h2{font:700 19px/1 'Barlow Condensed',sans-serif;margin:0 0 8px}
+.hud{display:flex;gap:18px;flex-wrap:wrap;align-items:baseline;margin-bottom:8px}
+.hud div{display:flex;flex-direction:column}
+.hud b{font:700 26px/1 'Barlow Condensed',sans-serif;color:var(--ac)}
+.hud span{font-size:12px;color:var(--mut)}
+.pad,.pad button,.cv{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}.pad,.pad button{touch-action:none}
+.cv{position:relative;border:2px solid var(--bd);border-radius:4px;overflow:hidden;background:#000;touch-action:none}
+canvas{display:block;width:100%;height:auto}
+#toast{position:absolute;left:0;right:0;top:10px;text-align:center;font:700 22px 'Barlow Condensed',sans-serif;pointer-events:none;opacity:0;transition:opacity .3s;text-shadow:0 2px 6px #000}
+.hint{font-size:13px;color:var(--mut);margin:8px 0}
+.pad{display:grid;grid-template-columns:repeat(3,64px);grid-template-rows:repeat(2,64px);gap:5px;justify-content:center;margin-top:8px}
+.pad button{font-size:26px;padding:0}
+.pad .u{grid-column:2}
+.pad .l{grid-column:1;grid-row:2}.pad .d{grid-column:2;grid-row:2}.pad .r{grid-column:3;grid-row:2}
+@media (hover:hover) and (pointer:fine){.pad{display:none}}
+.panel{background:var(--pn);border:1px solid var(--bd);border-radius:4px;padding:12px}
+button{font:600 14px Barlow,sans-serif;background:var(--bt);color:var(--bf);border:0;border-radius:3px;padding:8px 12px;cursor:pointer}
+button:disabled{opacity:.35;cursor:not-allowed}
+button:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.up{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--bd)}
+.up:first-of-type{border-top:0}
+.up p{margin:0;font-size:13px;color:var(--mut)}
+.up strong{font-size:15px}
+.ore{display:grid;grid-template-columns:14px 1fr auto auto;gap:8px;align-items:center;padding:3px 0;font-size:14px}
+.ore i{width:12px;height:12px;transform:rotate(45deg);display:block}
+.ore span{color:var(--mut);font-size:12px}
+.ore em{font-style:normal;min-width:28px;text-align:right}
+.lock{opacity:.55}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.ghost{background:transparent;color:var(--fg);border:1px solid var(--bd)}
+h1{background:linear-gradient(90deg,#ff4fa3,#ffb02e,#35d6ff);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:34px}
+button:not(.ghost){background:linear-gradient(135deg,#ff3d8b,#ff9f1c);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.cv{box-shadow:0 0 28px rgba(255,79,163,.35),0 0 60px rgba(53,214,255,.15)}
+.panel{border-top:3px solid var(--bt)}
+.ore i{box-shadow:0 0 7px rgba(255,255,255,.45)}
+body{font-family:VT323,monospace;font-size:20px;line-height:1.15}
+h1,h2,.hud b,.up strong,.nd strong{font-family:Silkscreen,monospace;font-weight:700}
+h1{font-size:28px}h2{font-size:14px}.hud b{font-size:17px}
+.hud span,.hint,.up p,.nd p,.ore span{font-size:17px}
+.wrap{gap:24px}
+.panel{border:0;border-radius:0;margin:4px;box-shadow:0 -4px 0 var(--bd),0 4px 0 var(--bd),-4px 0 0 var(--bd),4px 0 0 var(--bd)}
+.cv{border:0;border-radius:0;margin:8px;box-shadow:0 -4px 0 #1b0f33,0 4px 0 #1b0f33,-4px 0 0 #1b0f33,4px 0 0 #1b0f33,0 -8px 0 var(--bt),0 8px 0 var(--bt),-8px 0 0 var(--bt),8px 0 0 var(--bt)}
+canvas{image-rendering:pixelated}
+button{font-family:Silkscreen,monospace;font-size:11px;border-radius:0;padding:8px 10px;margin:4px;box-shadow:0 -4px 0 #1b0f33,0 4px 0 #1b0f33,-4px 0 0 #1b0f33,4px 0 0 #1b0f33,inset -4px -4px 0 rgba(0,0,0,.28),inset 4px 4px 0 rgba(255,255,255,.4)}
+button.ghost{box-shadow:0 -4px 0 var(--bd),0 4px 0 var(--bd),-4px 0 0 var(--bd),4px 0 0 var(--bd)}
+button:active:not(:disabled){transform:translateY(4px)}
+#toast{font-family:Silkscreen,monospace;font-size:15px}
+.nd{border-left-width:4px}
+.ore{grid-template-columns:30px 1fr auto auto}
+.ore i{width:26px;height:26px;transform:none;box-shadow:none;image-rendering:pixelated}
+.lock i{filter:brightness(0) opacity(.55)}
+body{color-scheme:dark;background:radial-gradient(circle at 8% 0%,rgba(255,79,163,.16),transparent 45%),radial-gradient(circle at 95% 100%,rgba(255,176,46,.10),transparent 45%),#0b0818 fixed;min-height:100vh}
+.main{background:rgba(22,10,50,.74);padding:16px;margin:4px;color:#f6efff;box-shadow:0 -4px 0 #1b0f33,0 4px 0 #1b0f33,-4px 0 0 #1b0f33,4px 0 0 #1b0f33}
+.main .hud span,.main .hint{color:#dccbff}
+body{--pn:#100d1c;--bd:#2c2350;--mut:#9b8fc4;--fg:#ece6ff;background:#07050f}
+.main{background:#0c0916}
+.panel{background:#100d1c}
+button:not(.ghost){background:#2a1f4d;color:#ffb02e;text-shadow:none}
+button:not(.ghost):hover:not(:disabled){background:#3b2b6e}
+button:disabled{background:#181329;color:#5f5585;opacity:1}
+button.ghost{background:#100d1c;color:#cfc3f5}
+.cv{box-shadow:0 -4px 0 #000,0 4px 0 #000,-4px 0 0 #000,4px 0 0 #000,0 -8px 0 #2c2350,0 8px 0 #2c2350,-8px 0 0 #2c2350,8px 0 0 #2c2350}
+.up,.nd{border-color:#241c42}
+#invtab{position:fixed;left:0;top:38%;z-index:21;margin:0;padding:14px 8px;writing-mode:vertical-rl;transform:rotate(180deg)}
+#inv{position:fixed;left:-340px;top:0;bottom:0;width:320px;overflow:auto;z-index:20;margin:0;padding:16px 14px 16px 44px;transition:left .2s steps(6);box-shadow:4px 0 0 var(--bd)}
+#inv.open{left:0}
+.slots{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 4px 14px}
+.sl{background:#07050f;border:4px solid var(--bd);padding:8px;display:flex;flex-direction:column;cursor:pointer;min-height:58px}
+.sl b{font-family:Silkscreen,monospace;font-size:12px;color:var(--ac)}
+.sl span{font-size:18px}
+.sl.on{border-color:var(--bt)}
+.slot{padding:8px 10px;margin:4px;border:4px solid var(--bd);font-size:17px}
+body.moon{--bt:#9db4ff;--ac:#cfe0ff;background:#04050c}
+body.frame{--bt:#ff7be8;--ac:#ffc4f4;background:#0b0412}
+#warn{position:fixed;inset:0;background:rgba(7,5,15,.94);display:flex;align-items:center;justify-content:center;z-index:70;padding:16px}
+#warn .wbox{width:100%;max-width:400px;text-align:center}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.tools button span{opacity:.75;font-weight:400}
+.nd{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0 6px 8px;border-left:2px solid var(--bd)}
+.nd p{margin:0;font-size:12px;color:var(--mut)}
+.nd.lock{opacity:.5}
+.nd.own{border-left-color:var(--ac)}
+#pres .hud{margin-bottom:4px}
+.ctabs{display:flex;gap:8px;margin:0 0 8px}
+.ctabs button{flex:1;margin:0}
+.ctabs button.on{background:linear-gradient(135deg,#ff3d8b,#ff9f1c);color:#fff}
+</style>
+<base target="_blank">
+</head>
+<body>
+<button id="invtab" aria-label="Toggle inventory">INVENTORY (I)</button>
+<div id="warn"><div class="wbox panel"><h2>Heads up</h2><p class="hint">Saving is browser-only for now. Your progress is stored in this browser on this device, so clearing site data, using private mode or switching browsers or devices will lose it. Cloud saves are not available yet.</p><div class="row" style="justify-content:center"><button id="wok">Got it</button></div></div></div>
+<aside id="inv" class="panel"><h2>Inventory</h2><p class="hint">Equip up to 4 tools. Equipped slots are hotkeys 1–4. Unequipped charms do not trigger.</p><div id="slots"></div><div id="items"></div></aside>
+<div class="wrap">
+ <div class="main">
+  <h1>Vitra Depths</h1>
+  <div class="hud">
+   <div><b id="al">0</b><span>Allores</span></div>
+   <div><b id="dp">0 m</b><span>Depth (best <span id="mx" style="display:inline">0</span> m)</span></div>
+   <div><b id="bg">0/10</b><span>Bag (worth <span id="bv" style="display:inline">0</span>)</span></div>
+   <div><b id="pr" style="color:#ff7fb5">0</b><span>Prunus</span></div>
+  </div>
+  <div class="cv"><canvas id="c" width="832" height="576"></canvas><div id="toast"></div></div>
+  <div class="tools" id="tools"></div>
+  <div class="hint">Arrow keys or WASD: move and dig in any direction. R: return to the surface. 1–4: use equipped tools. I: inventory. Ores are sold automatically at the surface.</div>
+  <div class="pad" id="pad"><button class="u" data-d="0,-1" aria-label="Up">▲</button><button class="l" data-d="-1,0" aria-label="Left">◀</button><button class="d" data-d="0,1" aria-label="Down">▼</button><button class="r" data-d="1,0" aria-label="Right">▶</button></div>
+ </div>
+ <div class="side">
+  <div class="panel"><h2>Upgrades</h2><div id="ups"></div></div>
+  <div class="panel"><h2>Prunus shop</h2><p class="hint" style="margin-top:0">Pink Prunus blossoms drop from mined blocks, more often and in larger amounts the deeper you dig. Each charm has a chance to trigger every time you finish mining a block. Prunus and charms survive prestige.</p><div id="shop"></div></div>
+  <div class="panel"><h2>Prestige</h2><div id="pres"></div></div>
+  <div class="panel" id="fpanel" style="display:none"><h2>Frame shop</h2><p class="hint" style="margin-top:0">Frame Shards come from prestiging in the Vitra Frame. Frame-only charms are sold in the Prunus shop while you are here.</p><div id="fshop"></div></div>
+  <div class="panel" id="lpanel" style="display:none"><h2>Lunar shop</h2><p class="hint" style="margin-top:0">Lunar Cores come from prestiging on the Moon. These upgrades only exist here.</p><div id="lshop"></div></div>
+  <div class="panel"><h2>Skill tree</h2><div id="tree"></div></div>
+  <div class="panel"><h2>Ore collection</h2><div class="ctabs" id="ctabs"><button data-ct="earth" class="on">Earth</button><button data-ct="moon">Moon</button><button data-ct="frame">Frame</button></div><div id="col"></div></div>
+  <div class="panel"><h2>Variant inventory</h2><div class="ctabs" id="vtabs"><button data-vt="shiny" class="on">Shiny</button><button data-vt="vit">Vitrariant</button></div><p class="hint" style="margin-top:0"><span id="vh"></span> Follows the world tab above. Total found: <b id="sht">0</b></p><div id="shc"></div></div>
+  <div class="row"><button class="ghost" id="ret">Return to surface (R)</button><button class="ghost" id="regen">Regenerate mine</button><button class="ghost" id="rst">Reset progress</button></div>
+ </div>
+</div>
+<script>
+const ORES=[
+{n:'Coal',c:'#6b7280',v:1,r:7,d:1,h:1},
+{n:'Copper',c:'#ff8a3d',v:3,r:18,d:3,h:3},
+{n:'Iron',c:'#b9c2cc',v:8,r:45,d:8,h:6},
+{n:'Silver',c:'#e6ecf5',v:22,r:130,d:15,h:10},
+{n:'Gold',c:'#ffd21f',v:70,r:450,d:25,h:16},
+{n:'Ruby',c:'#ff1f6b',v:250,r:1800,d:40,h:24},
+{n:'Sapphire',c:'#2f7bff',v:700,r:5500,d:60,h:32},
+{n:'Emerald',c:'#12e08f',v:2200,r:18000,d:90,h:44},
+{n:'Diamond',c:'#45e4f7',v:9000,r:60000,d:130,h:60},
+{n:'Mythril',c:'#7fa8ff',v:40000,r:200000,d:190,h:80},
+{n:'Void Crystal',c:'#b650ff',v:200000,r:600000,d:260,h:100},
+{n:'Allorium',c:'#ff4fd8',v:1500000,r:2000000,d:340,h:130},
+{n:'Basalt Shard',c:'#98a0b8',v:40,r:7,d:1,h:2},
+{n:'Ilmenite',c:'#5f7bd6',v:160,r:22,d:3,h:6},
+{n:'Lunar Glass',c:'#7fe8ff',v:650,r:80,d:10,h:12},
+{n:'Helium-3',c:'#9dffd9',v:3200,r:450,d:25,h:20},
+{n:'Moonstone',c:'#eae3ff',v:16000,r:3500,d:50,h:34},
+{n:'Starglass',c:'#ffe14d',v:90000,r:24000,d:90,h:55},
+{n:'Cratercore',c:'#ff5fa2',v:600000,r:300000,d:150,h:90},
+{n:'Selenium Heart',c:'#ae7bff',v:5000000,r:3000000,d:240,h:140},
+{n:'Prismite',c:'#8fa3c7',v:300,r:6,d:1,h:4},
+{n:'Quartz Echo',c:'#b9e6ff',v:720,r:12,d:10,h:12},
+{n:'Lattice Iron',c:'#a7a0d8',v:1728,r:25,d:19,h:20},
+{n:'Glimmerite',c:'#ffd6f0',v:4147,r:52,d:28,h:28},
+{n:'Cobaltine',c:'#3f8cff',v:9953,r:106,d:37,h:36},
+{n:'Neon Opal',c:'#ff7bd5',v:23888,r:217,d:46,h:44},
+{n:'Aether Ore',c:'#7affc8',v:57331,r:445,d:55,h:52},
+{n:'Frame Amber',c:'#ffb347',v:137594,r:913,d:64,h:60},
+{n:'Vitrine',c:'#9ef0ff',v:330226,r:1871,d:73,h:68},
+{n:'Chromaquartz',c:'#ff8a8a',v:792542,r:3837,d:82,h:76},
+{n:'Tessera',c:'#c9ff6b',v:1902101,r:7865,d:91,h:84},
+{n:'Photon Stone',c:'#fff27a',v:4565043,r:16123,d:100,h:92},
+{n:'Nullglass',c:'#5b5fc7',v:10956104,r:33052,d:109,h:100},
+{n:'Ion Jade',c:'#38e8a8',v:26294650,r:67757,d:118,h:108},
+{n:'Spectrite',c:'#ff5cf0',v:63107160,r:138901,d:127,h:116},
+{n:'Warp Diamond',c:'#5ef2ff',v:151457185,r:284747,d:136,h:124},
+{n:'Hollow Star',c:'#ffe9a8',v:363497244,r:583731,d:145,h:132},
+{n:'Resonite',c:'#b27bff',v:872393385,r:1196649,d:154,h:140},
+{n:'Fractal Gem',c:'#ff6fb5',v:2093744124,r:2453131,d:163,h:148},
+{n:'Paradox Pearl',c:'#f6f0ff',v:5024985897,r:5028919,d:172,h:156},
+{n:'Vitra Shard',c:'#ff3d8b',v:12059966154,r:10309283,d:181,h:164},
+{n:'Singularity',c:'#6c3dff',v:28943918768,r:21134031,d:190,h:172},
+{n:'Omniglass',c:'#d6fff4',v:69465405044,r:43324763,d:199,h:180},
+{n:'Vitra Heart',c:'#ff4fd8',v:166716972106,r:88815764,d:208,h:188},
+{n:'Regolith Pearl',c:'#d9d2c3',v:1000,r:150,d:15,h:14},
+{n:'Tranquility Opal',c:'#7fd0ff',v:9000,r:1400,d:38,h:28},
+{n:'Lunar Amber',c:'#ffb02e',v:250000,r:90000,d:120,h:70},
+{n:'Earthrise Prism',c:'#ff8be0',v:25000000,r:12000000,d:300,h:160}
+];
+const UP={
+pick:{n:'Pickaxe',b:15,g:1.55,m:99,e:()=>'Dig speed '+power().toFixed(1)+'x'},
+bag:{n:'Backpack',b:12,g:1.5,m:99,e:()=>'Holds '+cap()+' ores'},
+lamp:{n:'Lantern',b:25,g:1.7,m:12,e:()=>'Light radius '+rad().toFixed(1)},
+luck:{n:'Prospector luck',b:60,g:1.8,m:60,e:()=>'Rare ore odds '+luck().toFixed(1)+'x (new tiles only)'},
+haste:{n:'Boots',b:30,g:1.6,m:10,e:()=>'Move speed '+spd().toFixed(2)+'x'}
+};
+const fresh=()=>({al:0,max:0,up:{pick:0,bag:0,lamp:0,luck:0,haste:0},found:{},cores:0,tree:{},prest:0,earned:0,run:0,prunus:0,pt:{},ores:0,eq:[],eqs:[],world:0,lc:0,lprest:0,ls:{},fc:0,fprest:0,fs:{},shiny:{},vit:{}});
+function load(){try{const j=JSON.parse(localStorage.getItem('vitra-depths-v1'));if(j&&j.up){const f=fresh();return Object.assign(f,j,{up:Object.assign(f.up,j.up)})}}catch(e){}return fresh()}
+function save(){try{localStorage.setItem('vitra-depths-v1',JSON.stringify(S))}catch(e){}}
+let S=load();
+const has=id=>!!S.tree[id];
+const power=()=>(1+.6*S.up.pick)*(has('steel')?1.3:1)*(1+.03*S.prest)*(1+.1*LS('grav')), cap=()=>10+10*S.up.bag+(has('pockets')?15:0)+8*LS('pock'), rad=()=>3.5+.8*S.up.lamp+(has('seismic')?2:0)+LS('lamp'), luck=()=>(1+.5*S.up.luck)*(has('eye')?1.5:1)*(has('mother')?1.5:1)*(1+.12*LS('luck')), spd=()=>(1+.12*S.up.haste)*(has('legs')?1.25:1)*(1+.08*LS('grav'));
+const cost=k=>Math.ceil(UP[k].b*Math.pow(UP[k].g,S.up[k]));
+function fmt(n){n=Math.floor(n);if(n<10000)return n.toLocaleString('en-US');const s=['K','M','B','T','Qa'];let i=-1;while(n>=1000&&i<4){n/=1000;i++}return n.toFixed(n<10?2:n<100?1:0)+s[i]}
+let SEED=Math.floor(Math.random()*1e9);
+function hh(x,y,k){let t=(Math.imul(x,374761393)+Math.imul(y,668265263)+Math.imul(k,1442695041)+SEED)|0;t=Math.imul(t^(t>>>13),1274126177);t=Math.imul(t^(t>>>16),2246822519);t^=t>>>13;return(t>>>0)/4294967296}
+const T=new Map(),O=new Set(),D=new Set();
+function tile(x,y){const k=x+','+y;let t=T.get(k);if(t===undefined){t=-1;if(y>0){{for(const i of WL()){const o=ORES[i];if(y>=o.d&&hh(x,y,i+1)<luck()*(1+(y-o.d)/150)/o.r){t=i;break}}}}T.set(k,t)}return t}
+const isOpen=(x,y)=>y<=0||O.has(x+','+y);
+let bag=ORES.map(()=>0);
+const bagN=()=>bag.reduce((a,b)=>a+b,0), oreV=i=>ORES[i].v*(has('lode')&&ORES[i].r>=1800?2:1), bagV=()=>Math.floor(bag.reduce((a,n,i)=>a+n*oreV(i),0)*(has('roots')?1.25:1)*pm());
+const P={x:0,y:0,vx:0,vy:0};
+let dirs=[],moveCd=0,dig=null,tt=0;
+const $=id=>document.getElementById(id);
+function toast(t,c,ms){const e=$('toast');e.textContent=t;e.style.color=c||'#fff';e.style.opacity=1;clearTimeout(tt);tt=setTimeout(()=>e.style.opacity=0,ms||1600)}
+function reveal(){const r=rad(),R=Math.ceil(r);for(let dx=-R;dx<=R;dx++)for(let dy=-R;dy<=R;dy++)if(dx*dx+dy*dy<=r*r){const x=P.x+dx,y=P.y+dy;if(y>0){D.add(x+','+y);tile(x,y)}}}
+function sell(){const n=bagN();if(!n)return;const v=bagV();S.al+=v;S.earned+=v;bag=ORES.map(()=>0);toast('Sold '+n+' ores for +'+fmt(v)+' Allores','#ffd23f');save();renderUp()}
+function arrive(){reveal();if(P.y>S.max)S.max=P.y;if(P.y>S.run)S.run=P.y;if(P.y>best.y)best={x:P.x,y:P.y};if(P.y<=0)sell()}
+function ret(){P.x=0;P.y=0;dig=null;arrive()}
+function renderUp(){$('ups').innerHTML=Object.keys(UP).map(k=>{const u=UP[k],mx=S.up[k]>=u.m;return'<div class="up"><div><strong>'+u.n+' · Lv '+S.up[k]+'</strong><p>'+u.e()+'</p></div><button data-k="'+k+'"'+(mx||S.al<cost(k)?' disabled':'')+'>'+(mx?'Max':fmt(cost(k)))+'</button></div>'}).join('')}
+var colTab='earth';
+function renderCol(){const lo=colTab=='frame'?20:colTab=='moon'?12:0,hi=colTab=='frame'?43:colTab=='moon'?19:11;let h='';for(const i of CL()){const o=ORES[i],f=S.found[i]||0;h+='<div class="ore'+(f?'':' lock')+'"><i style="background:url('+ico(i)+') center/contain no-repeat"></i><div>'+(f?o.n:'???')+'</div><span>1 in '+o.r.toLocaleString('en-US')+' · '+fmt(o.v)+'</span><em>'+f+'</em></div>'}$('col').innerHTML=h;renderSh()}
+$('ctabs').onclick=function(e){var b=e.target.closest('[data-ct]');if(!b)return;colTab=b.dataset.ct;Array.prototype.forEach.call($('ctabs').children,function(x){x.classList.toggle('on',x.dataset.ct===colTab)});renderCol()};
+$('ups').onclick=e=>{const k=e.target.dataset&&e.target.dataset.k;if(!k)return;const c=cost(k);if(S.al>=c&&S.up[k]<UP[k].m){S.al-=c;S.up[k]++;save();renderUp();reveal()}};
+$('ret').onclick=ret;
+let rs=0;$('rst').onclick=()=>{if(!rs){rs=1;$('rst').textContent='Click again to wipe';setTimeout(()=>{rs=0;$('rst').textContent='Reset progress'},2500)}else{S=fresh();bag=ORES.map(()=>0);T.clear();O.clear();D.clear();best={x:0,y:0};save();ret();renderUp();renderCol();renderTree();renderTools();renderInv();rs=0;$('rst').textContent='Reset progress'}};
+const KM={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]};
+function press(d){if(!dirs.some(q=>q[0]==d[0]&&q[1]==d[1]))dirs.push(d)}
+function release(d){dirs=dirs.filter(q=>!(q[0]==d[0]&&q[1]==d[1]))}
+function typing(e){const t=e.target,lg=document.getElementById('warn');return !!((lg&&lg.style.display!=='none')||(t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.tagName==='SELECT'||t.isContentEditable)))}
+addEventListener('keydown',e=>{if(typing(e)||e.ctrlKey||e.metaKey||e.altKey)return;const k=e.key.length>1?e.key:e.key.toLowerCase();if(KM[k]){e.preventDefault();press(KM[k])}else if(k=='r')ret();else if(k=='i')$('inv').classList.toggle('open');else if(k.length==1&&k>='1'&&k<='4')useTool(S.eq[k-1])});
+addEventListener('keyup',e=>{const k=e.key.length>1?e.key:e.key.toLowerCase();if(KM[k])release(KM[k])});
+addEventListener('blur',()=>dirs=[]);
+document.querySelectorAll('#pad button').forEach(b=>{const d=b.dataset.d.split(',').map(Number);b.addEventListener('pointerdown',e=>{e.preventDefault();press(d)});['pointerup','pointerleave','pointercancel'].forEach(ev=>b.addEventListener(ev,()=>release(d)))});
+['contextmenu','selectstart','dragstart'].forEach(function(ev){$('pad').addEventListener(ev,function(e){e.preventDefault()})});
+function update(dt){
+ moveCd-=dt;for(const k in cds)if(cds[k]>0)cds[k]=Math.max(0,cds[k]-dt);
+ const d=dirs.length?dirs[dirs.length-1]:null;
+ if(!d){dig=null;return}face=d;
+ const nx=P.x+d[0],ny=P.y+d[1];
+ if(ny<-2){dig=null;return}
+ if(isOpen(nx,ny)){dig=null;if(moveCd<=0){P.x=nx;P.y=ny;moveCd=.13/spd();arrive()}return}
+ const t=tile(nx,ny);
+ if(t>=0&&bagN()>=cap()){dig=null;toast('Bag full. Press R to return and sell.','#ff8a65',900);return}
+ const k=nx+','+ny;
+ if(!dig||dig.k!==k)dig={k,x:nx,y:ny,p:0};
+ const tm=(.3+ny*.008)*(t>=0?1+ORES[t].h/12:1);
+ dig.p+=dt*power()/tm;if((sparkT-=dt)<=0){sparkT=t>=0?.05:.14;sparks(nx,ny,t)}
+ if(dig.p>=1){
+  O.add(k);dig=null;procs(nx,ny,d);
+  if(t>=0){if(!variantGot(t,nx,ny))bag[t]++;S.ores++;const first=!S.found[t];S.found[t]=(S.found[t]||0)+1;if(first)renderCol();else if(ORES[t].r>=1800)renderCol();
+   if(first||ORES[t].r>=1800){toast((first?'First ':'')+ORES[t].n+' found! 1 in '+ORES[t].r.toLocaleString('en-US'),ORES[t].c,2400);if(!first)renderCol()}
+   else if(false){}}
+  reveal();
+ }
+}
+const cv=$('c'),g=cv.getContext('2d'),TS=64,W=cv.width,H=cv.height;
+function draw(){
+ g.fillStyle='#050608';g.fillRect(0,0,W,H);const tm=performance.now()/1000;
+ const Z=zoomF();g.save();if(Z>1){g.translate(W/2,H/2);g.scale(1/Z,1/Z);g.translate(-W/2,-H/2)}
+ const cx=P.vx,cy=P.vy,cols=Math.ceil(W*Z/TS)+2,rows=Math.ceil(H*Z/TS)+2,r=rad();
+ const x0=Math.floor(cx-cols/2),y0=Math.floor(cy-rows/2);
+ for(let ty=y0;ty<y0+rows;ty++)for(let tx=x0;tx<x0+cols;tx++){
+  const sx=Math.round((tx-cx)*TS+W/2-TS/2),sy=Math.round((ty-cy)*TS+H/2-TS/2);
+  if(ty<=0){g.fillStyle=ty<-1?'#2e9bff':'#7fd9ff';g.fillRect(sx,sy,TS,TS);continue}
+  const k=tx+','+ty;if(!D.has(k))continue;
+  const open=O.has(k),band=ty/60,b0=BIO[Math.floor(band)%7],b1=BIO[(Math.floor(band)+1)%7],bf=band-Math.floor(band),hue=bf>.85?b0+(b1-b0)*(bf-.85)/.15:b0;
+  if(open){g.fillStyle='hsl('+hue+',45%,8%)';g.fillRect(sx,sy,TS,TS)}
+  else{
+   g.drawImage(rock(S.world==2?700+Math.floor(band)%3*4:S.world?580+Math.floor(band)%3*4:Math.round(hue/5)*5,Math.floor(hh(tx,ty,40)*4)),sx,sy,TS,TS);if(0){
+   for(let i=0;i<4;i++){g.fillStyle=hh(tx,ty,41+i)>.5?'rgba(255,255,255,.12)':'rgba(0,0,0,.18)';g.fillRect(sx+2+Math.floor(hh(tx,ty,45+i)*(TS-8)),sy+2+Math.floor(hh(tx,ty,50+i)*(TS-8)),4+i%2*2,3)}
+   g.fillStyle='rgba(255,255,255,.14)';g.fillRect(sx,sy,TS,2);g.fillRect(sx,sy,2,TS)}
+   g.fillStyle='rgba(0,0,0,.18)';g.fillRect(sx,sy+TS-2,TS,2);g.fillRect(sx+TS-2,sy,2,TS);
+   if(ty==1){for(let i=0;i<16;i++){const gh=8+Math.floor(hh(tx*16+i,0,80)*3)*4;g.fillStyle=S.world?'#9aa0b8':'#2fbf4f';g.fillRect(sx+i*4,sy,4,gh);g.fillStyle=S.world?'#d6daea':'#7be36a';g.fillRect(sx+i*4,sy,4,4)}}
+   const t=T.get(k);
+   if(t>=0){drawOre2(t,sx,sy,tm,tx,ty)}if(false){const o=ORES[t],mx=sx+TS/2,my=sy+TS/2,s=7;
+    g.save();if(o.r>=1800){g.shadowColor=o.c;g.shadowBlur=14}
+    g.fillStyle=o.c;g.beginPath();g.moveTo(mx,my-s);g.lineTo(mx+s,my);g.lineTo(mx,my+s);g.lineTo(mx-s,my);g.closePath();g.fill();
+    g.restore();g.fillStyle='rgba(255,255,255,.45)';g.fillRect(mx-2,my-s+3,3,3)}
+  }
+  const dx=tx-cx,dy=ty-cy,a=Math.min(.82,Math.pow(Math.hypot(dx,dy)/(r+.6),2)*.7)*(!open&&T.get(k)>=2?.5:1);
+  if(a>.01){g.fillStyle='rgba(0,0,0,'+a+')';g.fillRect(sx,sy,TS,TS)}
+ }
+ if(dig){const sx=Math.round((dig.x-cx)*TS+W/2-TS/2),sy=Math.round((dig.y-cy)*TS+H/2-TS/2);g.fillStyle='rgba(0,0,0,'+(dig.p*.3)+')';g.fillRect(sx,sy,TS,TS);cracks(sx,sy,dig.p,T.get(dig.k),dig.x,dig.y,tm);g.fillStyle='#1b0f33';g.fillRect(sx+8,sy+TS-14,TS-16,8);g.fillStyle='#ffb02e';g.fillRect(sx+10,sy+TS-12,Math.round((TS-20)*dig.p/2)*2,4)}
+ for(const f of FL){g.fillStyle='rgba(255,230,160,'+Math.min(.8,f.l*4)+')';g.fillRect(Math.round((f.x-cx)*TS+W/2-TS/2),Math.round((f.y-cy)*TS+H/2-TS/2),TS,TS)}
+ for(const p of PF){g.fillStyle=p.c;g.fillRect(Math.round(((p.x-cx)*TS+W/2)/4)*4,Math.round(((p.y-cy)*TS+H/2)/4)*4,4,4)}
+ if(P.y>0){const gr=g.createRadialGradient(W/2,H/2,4,W/2,H/2,(r+1)*TS*.9);gr.addColorStop(0,'rgba(255,190,90,.30)');gr.addColorStop(1,'rgba(255,190,90,0)');g.fillStyle=gr;g.fillRect(0,0,W,H)}
+ const px=W/2-TS/2,py=H/2-TS/2;
+ g.drawImage(minerSpr(),px,py,TS,TS);if(0){g.fillStyle='#2d7dff';g.fillRect(px+6,py+10,TS-12,TS-12);g.fillStyle='#ffcf9c';g.fillRect(px+10,py+9,TS-20,5);g.fillStyle='#1a4fb3';g.fillRect(px+6,py+TS-6,TS-12,3);
+ g.fillStyle='#ff5a36';g.fillRect(px+5,py+3,TS-10,9);
+ g.fillStyle='#fff3c4';g.fillRect(px+TS/2-3,py+5,6,4)}
+ g.restore();
+}
+function hud(){
+ $('al').textContent=fmt(S.al);$('dp').textContent=Math.max(0,P.y)+' m';$('mx').textContent=S.max;
+ $('bg').textContent=bagN()+'/'+cap();$('bv').textContent=fmt(bagV());hud2();
+}
+let last=performance.now(),sv=0;
+function loop(now){
+ const dt=Math.min(.05,(now-last)/1000);last=now;
+ update(dt);updFx(dt);
+ P.vx+=(P.x-P.vx)*Math.min(1,dt*14);P.vy+=(P.y-P.vy)*Math.min(1,dt*14);
+ draw();hud();
+ if((sv+=dt)>5){sv=0;save()}
+ requestAnimationFrame(loop);
+}
+let best={x:0,y:0},face=[0,1],pconf=0,fc=0;
+const cds={dyn:0,drill:0,scan:0,elev:0};
+const TOOLS=[
+{id:'dyn',n:'Dynamite',k:'1',cd:20,req:'blast'},
+{id:'drill',n:'Drill beam',k:'2',cd:30,req:'drillu'},
+{id:'scan',n:'Ore scanner',k:'3',cd:25,req:'scanu'},
+{id:'elev',n:'Elevator',k:'4',cd:12,req:'elevu'}];
+const TREE=[
+{id:'roots',n:'Deep Roots',d:'+25% Allores from every sale',c:1,req:'',lv:0},
+{id:'steel',n:'Hardened Steel',d:'+30% dig speed',c:2,req:'roots',lv:1},
+{id:'seismic',n:'Seismic Sense',d:'+2 light radius',c:4,req:'steel',lv:2},
+{id:'blast',n:'Blasting Caps',d:'Unlocks Dynamite (1): clears a 5×5 area',c:3,req:'steel',lv:2},
+{id:'drillu',n:'Drill Rig',d:'Unlocks Drill beam (2): bores 10 tiles ahead',c:5,req:'blast',lv:3},
+{id:'eye',n:'Keen Eye',d:'+50% rare ore odds',c:2,req:'roots',lv:1},
+{id:'scanu',n:'Ore Scanner',d:'Unlocks Scanner (3): reveals a wide radius',c:3,req:'eye',lv:2},
+{id:'lode',n:'Lode Sense',d:'Ores rarer than 1 in 1,800 sell for double',c:5,req:'eye',lv:2},
+{id:'mother',n:'Mother Lode',d:'Another +50% rare ore odds',c:12,req:'lode',lv:3},
+{id:'pockets',n:'Deep Pockets',d:'+15 bag capacity',c:2,req:'roots',lv:1},
+{id:'head',n:'Head Start',d:'Each run begins with Pickaxe, Backpack and Lantern at Lv 2',c:5,req:'pockets',lv:2},
+{id:'legs',n:'Quick Legs',d:'+25% move speed',c:3,req:'pockets',lv:2},
+{id:'elevu',n:'Elevator',d:'Unlocks Elevator (4): jump to your deepest point',c:4,req:'legs',lv:3},
+{id:'eff',n:'Efficient Tools',d:'Tool cooldowns 30% shorter',c:6,req:'elevu',lv:4}];
+const gain=()=>S.world==2?Math.floor(Math.sqrt(S.earned/2e8)+S.run/40):S.world?Math.floor(Math.sqrt(S.earned/60000)+S.run/50):Math.floor(Math.sqrt(S.earned/1500)+S.run/60);
+const need=()=>Math.round((S.world==2?300:S.world?220:150)*(1+.5*(S.world==2?S.fprest:S.world?S.lprest:S.prest))), pm=()=>(1+.05*S.prest)*(1+.04*S.lprest)*(1+.2*LS('forge'))*(1+.04*S.fprest);
+function collect(t,x,y){const sh=x!=null&&variantGot(t,x,y);if(!sh)bag[t]++;S.ores++;if(!sh&&Math.random()<ch('midas')){bag[t]++;fx(P.x,P.y-1,'#ffd23f',4)}const first=!S.found[t];S.found[t]=(S.found[t]||0)+1;if(first||ORES[t].r>=1800){renderCol();toast((first?'First ':'')+ORES[t].n+' found! 1 in '+ORES[t].r.toLocaleString('en-US'),ORES[t].c,2400)}}
+function breakAt(x,y){if(y<1||isOpen(x,y))return;const t=tile(x,y);if(t>=0){if(bagN()>=cap())return;collect(t,x,y)}O.add(x+','+y)}
+function useTool(id){
+ const tl=TOOLS.find(q=>q.id==id);if(!tl||!has(tl.req)||!S.eq.includes(id)||cds[id]>0)return;
+ if(id=='dyn'){for(let dx=-2;dx<=2;dx++)for(let dy=-2;dy<=2;dy++)breakAt(P.x+dx,P.y+dy);toast('Boom!','#ff8a65',700)}
+ else if(id=='drill'){for(let i=1;i<=10;i++)breakAt(P.x+face[0]*i,P.y+face[1]*i);toast('Drill beam fired','#7fd6ff',700)}
+ else if(id=='scan'){const R=16;for(let dx=-R;dx<=R;dx++)for(let dy=-R;dy<=R;dy++)if(dx*dx+dy*dy<=R*R&&P.y+dy>0){D.add((P.x+dx)+','+(P.y+dy));tile(P.x+dx,P.y+dy)}toast('Scan complete','#b650ff',900)}
+ else if(id=='elev'){if(best.y<=P.y+2)return;P.x=best.x;P.y=best.y;dig=null;arrive();toast('Elevator: back at depth '+P.y,'#ffd23f',900)}
+ cds[id]=tl.cd*(has('eff')?.7:1);reveal();
+}
+function renderTools(){$('tools').innerHTML=TOOLS.filter(q=>has(q.req)).map(q=>'<button data-t="'+q.id+'">'+q.k+' · '+q.n+' <span id="cd-'+q.id+'"></span></button>').join('')||'<span class="hint">Tools unlock in the prestige skill tree.</span>'}
+$('tools').onclick=e=>{const b=e.target.closest('button');if(b)useTool(b.dataset.t)};
+function renderTree(){$('tree').innerHTML=TREE.map(n=>{const own=has(n.id),av=!n.req||has(n.req),ok=!own&&av&&S.cores>=n.c;return'<div class="nd'+(own?' own':av?'':' lock')+'" style="margin-left:'+n.lv*14+'px"><div><strong>'+n.n+'</strong><p>'+n.d+(av||own?'':' · needs '+TREE.find(q=>q.id==n.req).n)+'</p></div><button data-n="'+n.id+'"'+(ok?'':' disabled')+'>'+(own?'Owned':n.c+' Cores')+'</button></div>'}).join('')}
+$('tree').onclick=e=>{const id=e.target.dataset&&e.target.dataset.n;const n=TREE.find(q=>q.id==id);if(!n||has(id)||S.cores<n.c||(n.req&&!has(n.req)))return;S.cores-=n.c;S.tree[id]=1;save();renderTree();renderTools();renderUp();reveal()};
+function renderPres(){$('pres').innerHTML='<div class="hud"><div><b id="pc">0</b><span id="pcl">Deep Cores</span></div><div><b id="pn">0</b><span>Prestiges</span></div></div><p class="hint">Reset your Allores, upgrades and depth to earn Cores (Deep Cores on Earth, Lunar Cores on the Moon). Earning more and digging deeper in a run gives more Cores. Your ore collection and skill tree are kept.</p><p class="hint" id="pq"></p><button id="pb">Prestige</button><button id="travel"></button><button id="travelf"></button>'}
+$('pres').onclick=e=>{if(e.target.id=='travel'){travel();return}if(e.target.id=='travelf'){if(S.lprest>=10)travel(2);return}if(e.target.id!='pb')return;const g=gain();if(g<1||S.ores<need())return;if(!pconf){pconf=1;setTimeout(()=>pconf=0,3000);return}
+ pconf=0;if(S.world==2){S.fc+=g;S.fprest++}else if(S.world){S.lc+=g;S.lprest++}else{S.cores+=g;S.prest++}S.ores=0;S.al=0;S.earned=0;S.run=0;S.up=fresh().up;if(has('head')){S.up.pick=2;S.up.bag=2;S.up.lamp=2}{const hs=LS('head')*3+(S.fs.fhead||0)*5;if(hs){S.up.pick=Math.max(S.up.pick,hs);S.up.bag=Math.max(S.up.bag,hs);S.up.lamp=Math.max(S.up.lamp,hs)}}
+ bag=ORES.map(()=>0);T.clear();O.clear();D.clear();best={x:0,y:0};for(const k in cds)cds[k]=0;dig=null;P.vx=0;P.vy=0;ret();save();renderUp();renderTree();toast('Prestiged! +'+g+(S.world==2?' Frame Shards':S.world?' Lunar Cores':' Deep Cores'),'#ffb347',2400)};
+function hud2(){
+ const g=gain(),ok=g>=1&&S.ores>=need();$('pc').textContent=S.world==2?S.fc:S.world?S.lc:S.cores;$('pn').textContent=S.world==2?S.fprest:S.world?S.lprest:S.prest;$('pcl').textContent=S.world==2?'Frame Shards':S.world?'Lunar Cores':'Deep Cores';{const tb=$('travel');tb.textContent=S.world?'Return to Earth':(S.prest>=10?'Travel to the Moon':'Moon: '+S.prest+'/10 prestiges');tb.disabled=!S.world&&S.prest<10}{const tf=$('travelf');if(tf){tf.style.display=S.world==2?'none':'';tf.textContent=S.lprest>=10?'Travel to the Vitra Frame':'Vitra Frame: '+S.lprest+'/10 lunar prestiges';tf.disabled=S.lprest<10}}const b=$('pb');b.disabled=!ok;b.textContent=pconf?'Click again to confirm':(S.ores<need()?'Mine '+(need()-S.ores)+' more ores':g<1?'Earn more to prestige':'Prestige for '+g+' Cores');
+ $('pq').textContent='Ores mined this run: '+S.ores+' / '+need()+'. Your prestige bonus: +'+Math.round((pm()-1)*100)+'% sales and +'+S.prest*3+'% dig speed (each prestige adds +5% and +3%; the ore requirement grows by 75 each time).';
+ TOOLS.forEach(q=>{const e=$('cd-'+q.id);if(e)e.textContent=cds[q.id]>0?Math.ceil(cds[q.id])+'s':'ready'});
+ $('pr').textContent=fmt(S.prunus);
+ if(++fc%20==0){autoEq();const ls0=S.lc+JSON.stringify(S.ls)+S.world+S.fc+JSON.stringify(S.fs);if(ls0!==sgn.l){sgn.l=ls0;renderLS();renderFS();applyWorld()}const a=Object.values(S.found).join(),b=S.cores+Object.keys(S.tree).join(),c=S.prunus+JSON.stringify(S.pt);if(a!==sgn.c){sgn.c=a;renderCol()}if(b!==sgn.t){sgn.t=b;renderTree()}if(c!==sgn.s){sgn.s=c;renderShop();renderInv()}}
+}
+const sgn={c:'',t:'',s:''};
+const PT={
+bomb:{n:'Pixel Bomb',d:'Blows up a 3×3 area',b:10,g:1.6,m:6,cap:.0625,p:l=>.05+.0025*l},
+rip:{n:'Ripper',d:'Bores 6 tiles ahead',b:20,g:1.6,m:10,cap:.0485,p:l=>.04+.00095*l},
+bloom:{n:'Prunus Bloom',d:'Drops bonus Prunus',b:15,g:1.6,m:25,p:l=>.03+.012*l},
+midas:{n:'Midas Touch',d:'Collected ores are duplicated',b:35,g:1.65,m:25,p:l=>.06+.02*l},
+quake:{n:'Quake',d:'Shatters a 6×2 strip (6 wide, 2 tall)',b:60,g:1.7,m:20,p:l=>.01+.006*l},
+nova:{w:2,n:'Prism Nova',d:'Vitra Frame only · blasts a 5×5 area',b:80,g:1.7,m:10,cap:.05,p:l=>.02+.0025*l},
+lance:{w:2,n:'Frame Lance',d:'Vitra Frame only · bores 12 tiles ahead',b:90,g:1.7,m:10,cap:.045,p:l=>.02+.002*l},
+rift:{w:2,n:'Rift Walker',d:'Vitra Frame only · cuts a cross 8 tiles long',b:110,g:1.75,m:10,cap:.04,p:l=>.015+.002*l},
+halo:{w:2,n:'Halo Ring',d:'Vitra Frame only · shatters a ring around you',b:130,g:1.8,m:10,cap:.035,p:l=>.012+.002*l},
+sight:{w:2,z:1,n:'Vitra Sight',d:'Vitra Frame only · passive, zooms the view out',b:60,g:1.5,m:15,p:l=>1.125+.025*l},
+star:{n:'Star',d:'Mines a star shape around you',b:45,g:1.65,m:11,cap:.0775,p:l=>.04+.00375*l}};
+const zoomF=()=>{const l=S.pt.sight||0;return l&&S.eq.includes('sight')&&S.world==2?1.125+.025*(l-1):1};
+const qt=k=>PT[k].z?'zoom '+(1.125+.025*((S.pt[k]||1)-1)).toFixed(3)+'x out':(chq(k)*100).toFixed(1)+'% per block';
+const ch=k=>S.eq.includes(k)&&(!PT[k].w||PT[k].w==S.world)?chq(k):0;
+const BIO=[28,205,160,275,330,8,185];
+function pol(pts,fill){g.fillStyle=fill;g.beginPath();pts.forEach((p,i)=>i?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1]));g.closePath();g.fill()}
+function shade(c,a){const n=parseInt(c.slice(1),16),r=n>>16,gg=(n>>8)&255,b=n&255,f=a>0?255:0,p=Math.abs(a);return'rgb('+Math.round(r+(f-r)*p)+','+Math.round(gg+(f-gg)*p)+','+Math.round(b+(f-b)*p)+')'}
+function vein(sx,sy,r){g.beginPath();for(let i=0;i<3;i++){g.moveTo(sx+3,sy+6+i*10);g.lineTo(sx+10,sy+10+i*9-r(i)*6);g.lineTo(sx+20,sy+4+i*10+r(i+3)*5);g.lineTo(sx+29,sy+9+i*8)}}
+function drawOre(t,sx,sy,tm,tx,ty){
+ const o=ORES[t],c=o.c,cx=sx+16,cy=sy+16,r=i=>hh(tx,ty,60+i);
+ g.save();
+ if(t>=2){g.globalAlpha=.22+.08*Math.sin(tm*2+tx);g.fillStyle=t==11?'hsl('+(tm*90%360)+',100%,60%)':c;g.beginPath();g.arc(cx,cy,15,0,6.3);g.fill();g.globalAlpha=1}
+ if(t>=5){g.shadowColor=t==11?'hsl('+(tm*120%360)+',100%,60%)':c;g.shadowBlur=10+(t>=9?8:0)+4*Math.sin(tm*3+tx)}
+ if(t<=4){
+  const n=3+Math.floor(r(0)*2);
+  for(let i=0;i<n;i++){const bx=sx+7+r(i+1)*18,by=sy+8+r(i+9)*17,s=3.5+r(i+17)*3+t*.2;
+   pol([[bx-s,by],[bx-s*.4,by-s],[bx+s*.8,by-s*.7],[bx+s,by+s*.3],[bx,by+s]],t==0?'#14161d':shade(c,-.35));
+   pol([[bx-s*.8,by],[bx-s*.3,by-s*.8],[bx+s*.5,by-s*.6],[bx,by+s*.1]],t==0?'#3c4254':c);
+   g.globalAlpha=.85;g.fillStyle=t==0?'#9aa3bd':'#fff';g.fillRect(Math.round(bx-s*.4),Math.round(by-s*.6),2,2);g.globalAlpha=1}
+  if(t==1){g.fillStyle='#3fe0b4';for(let i=0;i<3;i++)g.fillRect(Math.round(sx+5+r(30+i)*20),Math.round(sy+5+r(40+i)*20),2,2)}
+  if(t==2){g.fillStyle='#d2692e';for(let i=0;i<3;i++)g.fillRect(Math.round(sx+5+r(30+i)*20),Math.round(sy+5+r(40+i)*20),3,2)}
+  if(t>=3){const sp=(Math.sin(tm*5+tx*2+ty)+1)/2;g.globalAlpha=sp;g.fillStyle='#fff';g.fillRect(cx+Math.round(Math.sin(tx*3)*7)-1,cy-9,2,5);g.fillRect(cx+Math.round(Math.sin(tx*3)*7)-3,cy-7,6,1);g.globalAlpha=1}
+ } else if(t<=8||t==10){
+  const n=t==10?3:2+Math.floor(r(0)*2);
+  for(let i=0;i<n;i++){const bx=sx+8+r(i+1)*16,by=sy+23-r(i+5)*3,h=9+r(i+9)*7+(t==10?4:0),w=3.5+r(i+13)*2,tl=(r(i+20)-.5)*5;
+   pol([[bx-w,by],[bx-w+tl*.3,by-h*.6],[bx+tl,by-h],[bx+w+tl*.3,by-h*.6],[bx+w,by]],shade(c,-.4));
+   pol([[bx-w,by],[bx-w+tl*.3,by-h*.6],[bx+tl,by-h],[bx+tl*.5,by-h*.3],[bx,by]],c);
+   pol([[bx+tl,by-h],[bx+w+tl*.3,by-h*.6],[bx+w,by],[bx+tl*.5,by-h*.3]],shade(c,-.18));
+   pol([[bx-w*.4,by-h*.6],[bx+tl,by-h*.95],[bx,by-h*.5]],shade(c,.65))}
+  const sp=(Math.sin(tm*4+tx*1.7+ty)+1)/2,ox=Math.round(Math.sin(tx)*6);g.shadowBlur=0;g.fillStyle='#fff';g.globalAlpha=sp;g.fillRect(cx-1+ox,cy-9,2,7);g.fillRect(cx-4+ox,cy-6,8,2);g.globalAlpha=1;
+  if(t==10){g.fillStyle='#ecc6ff';for(let i=0;i<3;i++){const a=tm*1.6+i*2.1;g.fillRect(Math.round(cx+Math.cos(a)*12),Math.round(cy+Math.sin(a)*9),2,2)}}
+ } else if(t==9){
+  g.lineCap='round';g.lineWidth=3.5;g.strokeStyle=shade(c,-.4);vein(sx,sy,r);g.stroke();
+  g.lineWidth=2;g.strokeStyle=c;vein(sx,sy,r);g.stroke();
+  g.shadowBlur=0;g.lineWidth=1;g.globalAlpha=.55+.45*Math.sin(tm*3+tx);g.strokeStyle='#eaf2ff';vein(sx,sy,r);g.stroke();g.globalAlpha=1;
+ } else {
+  const hu=(tm*90+tx*20)%360;
+  pol([[cx-10,cy],[cx-5,cy-10],[cx+5,cy-10],[cx+10,cy],[cx+5,cy+10],[cx-5,cy+10]],'hsl('+hu+',100%,45%)');
+  pol([[cx-10,cy],[cx-5,cy-10],[cx+5,cy-10],[cx,cy]],'hsl('+(hu+60)+',100%,68%)');
+  pol([[cx+10,cy],[cx+5,cy+10],[cx-5,cy+10],[cx,cy]],'hsl('+(hu+200)+',100%,38%)');
+  pol([[cx-3,cy-7],[cx+3,cy-7],[cx,cy-2]],'rgba(255,255,255,.8)');
+  g.shadowBlur=0;g.fillStyle='#fff';for(let i=0;i<4;i++){const a=tm*2+i*1.57;g.fillRect(Math.round(cx+Math.cos(a)*14),Math.round(cy+Math.sin(a)*14),2,2)}
+ }
+ g.restore()}
+g.imageSmoothingEnabled=false;
+const SPR={},BAY=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5];
+const G=l=>{const v=Math.round(255*Math.max(0,Math.min(1,l)));return'rgb('+v+','+v+','+v+')'};
+function rg(seed){let s=(seed*2654435761)>>>0;return()=>{s=(s+0x6D2B79F5)|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function rgbs(c,a){const n=parseInt(c.slice(1),16),r=n>>16,q=(n>>8)&255,b=n&255,f=a>0?255:0,p=Math.abs(a);return[Math.round(r+(f-r)*p),Math.round(q+(f-q)*p),Math.round(b+(f-b)*p)]}
+function hsl2rgb(h,s,l){const a=s*Math.min(l,1-l),f=n=>{const k=(n+h/30)%12;return Math.round(255*(l-a*Math.max(-1,Math.min(k-3,9-k,1))))};return[f(0),f(8),f(4)]}
+function pal(t,fr){if(t==11)return[.1,.28,.48,.68,.86].map(l=>hsl2rgb(fr*30,1,l));if(t==0)return[-.88,-.7,-.45,-.12,.3].map(a=>rgbs(ORES[0].c,a));return[-.75,-.42,0,.4,.8].map(a=>rgbs(ORES[t].c,a))}
+function poly(x,pts,fill,ln){x.fillStyle=fill;x.beginPath();pts.forEach((p,i)=>i?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1]));x.closePath();x.fill();if(ln){x.strokeStyle=G(.06);x.lineWidth=.8;x.stroke()}}
+function vg(x,y0,y1,a,b){const gr=x.createLinearGradient(0,y0,0,y1);gr.addColorStop(0,G(a));gr.addColorStop(1,G(b));return gr}
+function drawArt(x,t,v){
+ const rr=rg(t*97+v*31+7);
+ if(t<=4){
+  const n=3+(rr()*2|0);
+  for(let i=0;i<n;i++){const bx=8+rr()*16,by=9+rr()*15,s=5+rr()*3+t*.3,k=7+(rr()*3|0);
+   const gr=x.createRadialGradient(bx-s*.4,by-s*.4,1,bx,by,s*1.3);gr.addColorStop(0,G(.98));gr.addColorStop(.5,G(.6));gr.addColorStop(1,G(.1));
+   x.fillStyle=gr;x.beginPath();
+   for(let j=0;j<k;j++){const a=j/k*6.283,rad=s*(.75+rr()*.4),px=bx+Math.cos(a)*rad,py=by+Math.sin(a)*rad*.9;j?x.lineTo(px,py):x.moveTo(px,py)}
+   x.closePath();x.fill();x.strokeStyle=G(.08);x.lineWidth=.9;x.stroke();
+   x.fillStyle=G(1);x.fillRect(Math.round(bx-s*.55),Math.round(by-s*.6),3,1);x.fillRect(Math.round(bx-s*.55),Math.round(by-s*.6),1,3)}
+  if(t>=3){x.strokeStyle=G(1);x.lineWidth=1;x.beginPath();x.moveTo(6,20);x.lineTo(26,8);x.stroke()}
+ } else if(t<=8||t==10){
+  const n=t==10?3:2+(rr()*2|0);
+  for(let i=0;i<n;i++){const bx=8+rr()*16,by=27-rr()*3,h=15+rr()*8+(t==10?5:0),w=4.5+rr()*2,tl=(rr()-.5)*6;
+   poly(x,[[bx-w,by],[bx-w+tl*.3,by-h*.62],[bx+tl,by-h],[bx+tl*.5,by-h*.3],[bx,by]],vg(x,by-h,by,.85,.4),1);
+   poly(x,[[bx+tl,by-h],[bx+w+tl*.3,by-h*.62],[bx+w,by],[bx+tl*.5,by-h*.3]],vg(x,by-h,by,.34,.1),1);
+   poly(x,[[bx-w*.4,by-h*.6],[bx+tl,by-h*.97],[bx,by-h*.5]],G(1),0)}
+ } else if(t==9){
+  x.lineCap='round';x.lineJoin='round';
+  for(let i=0;i<3;i++){const p=[[2,7+i*9],[11,12+i*8-rr()*7],[21,6+i*9+rr()*6],[30,11+i*7]];
+   [[5,.3],[3,.72],[1.2,1]].forEach(w=>{x.lineWidth=w[0];x.strokeStyle=G(w[1]);x.beginPath();p.forEach((q,j)=>j?x.lineTo(q[0],q[1]):x.moveTo(q[0],q[1]));x.stroke()})}
+ } else {
+  poly(x,[[3,16],[10,4],[22,4],[29,16],[22,28],[10,28]],vg(x,4,28,.7,.3),1);
+  poly(x,[[3,16],[10,4],[22,4],[16,16]],G(.97),1);
+  poly(x,[[29,16],[22,28],[10,28],[16,16]],G(.18),1);
+  poly(x,[[10,4],[16,16],[3,16]],G(.78),1);
+  poly(x,[[12,8],[20,8],[16,13]],G(1),0)
+ }
+}
+function bake(t,v,fr){
+ const cv=document.createElement('canvas');cv.width=cv.height=32;const x=cv.getContext('2d');
+ drawArt(x,t,v);
+ const im=x.getImageData(0,0,32,32),d=im.data,P5=pal(t,fr),sm=new Uint8Array(1024);
+ for(let y=0;y<32;y++)for(let X=0;X<32;X++){const i=(y*32+X)*4;
+  if(d[i+3]<128){d[i+3]=0;continue}
+  sm[y*32+X]=1;const q=d[i]/255*4+(BAY[(y&3)*4+(X&3)]/16-.5)*.9,c=P5[Math.max(0,Math.min(4,Math.round(q)))];
+  d[i]=c[0];d[i+1]=c[1];d[i+2]=c[2];d[i+3]=255}
+ const out=new Uint8ClampedArray(4096);
+ for(let y=0;y<32;y++)for(let X=0;X<32;X++){const j=y*32+X,i=j*4;
+  if(sm[j]){out[i]=d[i];out[i+1]=d[i+1];out[i+2]=d[i+2];out[i+3]=255;continue}
+  const nb=(X>0&&sm[j-1])||(X<31&&sm[j+1])||(y>0&&sm[j-32])||(y<31&&sm[j+32]);
+  if(nb){out[i]=P5[0][0];out[i+1]=P5[0][1];out[i+2]=P5[0][2];out[i+3]=255;continue}
+  if(t>=2){const lev=1-Math.hypot(X-15.5,y-15.5)/16;if(lev>0&&lev*1.15>BAY[(y&3)*4+(X&3)]/16){const c=P5[3];out[i]=c[0];out[i+1]=c[1];out[i+2]=c[2];out[i+3]=t>=5?120:80}}
+ }
+ x.putImageData(new ImageData(out,32,32),0,0);return cv}
+function drawOre2(t,sx,sy,tm,tx,ty){
+ const v=Math.floor(hh(tx,ty,70)*3),fr=t==11?Math.floor(tm*6)%12:0,k=t+'|'+v+'|'+fr;
+ g.drawImage(SPR[k]||(SPR[k]=bake(t,v,fr)),sx,sy);
+ if(t>=3){const ph=(tm*2.2+hh(tx,ty,71)*6)%3;if(ph<.3){const px=sx+5+Math.floor(hh(tx,ty,72)*20),py=sy+6+Math.floor(hh(tx,ty,73)*18);g.fillStyle='#fff';g.fillRect(px,py-2,2,6);g.fillRect(px-2,py,6,2)}}
+ if(t==10){g.fillStyle='#f0d0ff';for(let i=0;i<3;i++){const a=tm*1.6+i*2.1;g.fillRect(Math.round(sx+16+Math.cos(a)*14),Math.round(sy+16+Math.sin(a)*11),2,2)}}
+ if(t==9){g.fillStyle='rgba(235,245,255,'+(.25+.25*Math.sin(tm*3+tx))+')';g.fillRect(sx+4,sy+13,24,3)}
+}
+const ICO={};function ico(t){return ICO[t]||(ICO[t]=bake(t,0,0).toDataURL())}
+function pal(t,fr){if(t==11)return[.2,.36,.52,.7,.88].map(l=>hsl2rgb(fr*30,1,l));if(t==0)return[-.85,-.65,-.42,-.12,.3].map(a=>rgbs(ORES[0].c,a));return[-.5,-.25,0,.3,.66].map(a=>rgbs(ORES[t].c,a))}
+function shard(x,bx,by,h,w,ln){const gr=x.createLinearGradient(bx-w,by-h,bx+w,by);gr.addColorStop(0,G(.95));gr.addColorStop(.5,G(.6));gr.addColorStop(1,G(.2));poly(x,[[bx+ln,by-h],[bx+w+ln*.4,by-h*.55],[bx+w*.8,by],[bx-w*.8,by],[bx-w+ln*.4,by-h*.55]],gr,0);x.fillStyle=G(1);x.fillRect(Math.round(bx-w*.5+ln*.5),Math.round(by-h*.7),2,3)}
+function bigCrystal(x,cx,top,h,w){
+ const P=[[cx,top],[cx+w*.5,top+h*.26],[cx+w*.85,top+h*.5],[cx+w,top+h*.6],[cx+w*.9,top+h*.7],[cx+w*.5,top+h*.88],[cx,top+h],[cx-w*.5,top+h*.88],[cx-w*.9,top+h*.7],[cx-w,top+h*.6],[cx-w*.85,top+h*.5],[cx-w*.5,top+h*.26]];
+ const gr=x.createLinearGradient(cx-w,top,cx+w*.8,top+h);gr.addColorStop(0,G(.92));gr.addColorStop(.55,G(.55));gr.addColorStop(1,G(.2));poly(x,P,gr,0);
+ x.globalAlpha=.4;poly(x,[P[0],P[11],P[10],P[9],[cx,top+h*.62]],G(1),0);x.globalAlpha=.7;poly(x,[[cx-w*.7,top+h*.58],[cx-w*.1,top+h*.46],[cx+w*.55,top+h*.52],[cx-w*.1,top+h*.62]],G(1),0);x.globalAlpha=1;
+ x.fillStyle=G(1);x.fillRect(Math.round(cx-1),top+1,2,4)}
+function drawArt(x,t,v){
+ const rr=rg(t*97+v*31+7);
+ if(t<=4){
+  const n=3+(rr()*2|0);
+  for(let i=0;i<n;i++){const bx=9+rr()*14,by=10+rr()*13,s=5.5+rr()*3+t*.25,k=6+(rr()*3|0);
+   const gr=x.createLinearGradient(bx-s,by-s,bx+s,by+s);gr.addColorStop(0,G(.98));gr.addColorStop(.45,G(.62));gr.addColorStop(1,G(.18));
+   x.fillStyle=gr;x.beginPath();
+   for(let j=0;j<k;j++){const a=j/k*6.283+.3,rad=s*(.78+rr()*.35),px=bx+Math.cos(a)*rad,py=by+Math.sin(a)*rad*.92;j?x.lineTo(px,py):x.moveTo(px,py)}
+   x.closePath();x.fill();
+   x.fillStyle=G(1);x.fillRect(Math.round(bx-s*.5),Math.round(by-s*.55),3,2);x.fillRect(Math.round(bx-s*.5),Math.round(by-s*.55)+2,1,2)}
+ } else {
+  if(rr()>.2)shard(x,6+rr()*2,15,10+rr()*3,3,-3);
+  if(rr()>.2)shard(x,25+rr()*2,14,12+rr()*3,3,3);
+  if(rr()>.3)shard(x,5+rr()*2,28,7,3,2);
+  if(rr()>.3)shard(x,26+rr()*2,29,9,3,-2);
+  bigCrystal(x,16,2+rr()*3|0,25+rr()*3+(t==10?2:0),7+rr()*2);
+ }
+}
+function bake(t,v,fr){
+ const cv=document.createElement('canvas');cv.width=cv.height=32;const x=cv.getContext('2d');
+ drawArt(x,t,v);
+ const d=x.getImageData(0,0,32,32).data,P5=pal(t,fr),sm=new Uint8Array(1024),out=new Uint8ClampedArray(4096);
+ for(let j=0;j<1024;j++)if(d[j*4+3]>=128)sm[j]=1;
+ for(let y=0;y<32;y++)for(let X=0;X<32;X++){const j=y*32+X,i=j*4;
+  if(sm[j]){const c=P5[Math.max(0,Math.min(4,Math.round(d[i]/255*4)))];out[i]=c[0];out[i+1]=c[1];out[i+2]=c[2];out[i+3]=255;continue}
+  if((X>0&&sm[j-1])||(y>0&&sm[j-32])||(X>0&&y>0&&sm[j-33])){out[i+3]=150;continue}
+  if((X>1&&sm[j-2])||(y>1&&sm[j-64])||(X>1&&y>1&&sm[j-66])){out[i+3]=70;continue}
+  if(t>=2){const lev=1-Math.hypot(X-15.5,y-15.5)/16;if(lev>0){const c=P5[3];out[i]=c[0];out[i+1]=c[1];out[i+2]=c[2];out[i+3]=Math.ceil(lev*3)*(t>=5?24:14)}}
+ }
+ x.clearRect(0,0,32,32);x.putImageData(new ImageData(out,32,32),0,0);return cv}
+function drawOre2(t,sx,sy,tm,tx,ty){
+ const v=Math.floor(hh(tx,ty,70)*3),fr=t==11?Math.floor(tm*6)%12:0,k=t+'|'+v+'|'+fr;
+ g.drawImage(SPR[k]||(SPR[k]=bake(t,v,fr)),sx,sy,TS,TS);
+ if(t>=3){const ph=(tm*2.2+hh(tx,ty,71)*6)%3;if(ph<.3){const px=sx+12+Math.floor(hh(tx,ty,72)*10)*4,py=sy+12+Math.floor(hh(tx,ty,73)*9)*4;g.fillStyle='#fff';g.fillRect(px,py-4,4,12);g.fillRect(px-4,py,12,4)}}
+ if(t==10){g.fillStyle='#f0d0ff';for(let i=0;i<3;i++){const a=tm*1.6+i*2.1;g.fillRect(Math.round((sx+TS/2+Math.cos(a)*26)/4)*4,Math.round((sy+TS/2+Math.sin(a)*22)/4)*4,4,4)}}
+}
+function rock(h,v){const k='r'+h+'|'+v;if(SPR[k])return SPR[k];
+ const c=document.createElement('canvas');c.width=c.height=32;const x=c.getContext('2d'),rr=rg(h*13+v*7+1),T=[0,1,2,3,4].map(i=>'hsl('+h+','+(h>=500?9:50+i*2)+'%,'+(15+i*8)+'%)'),gd=[];
+ for(let i=0;i<64;i++)gd.push(rr());
+ for(let y=0;y<32;y++)for(let X=0;X<32;X++){let i=1+Math.floor(gd[(y>>2)*8+(X>>2)]*3);const n=rr();if(n<.1)i--;else if(n>.92)i++;if(X<2||y<2)i=4;else if(X>29||y>29)i=0;x.fillStyle=T[Math.max(0,Math.min(4,i))];x.fillRect(X,y,1,1)}
+ x.fillStyle=T[0];for(let i=0;i<2;i++){let cx=4+(rr()*22|0),cy=4+(rr()*22|0);for(let j=0;j<6;j++){x.fillRect(cx,cy,2,1);cx+=rr()<.5?1:2;cy+=rr()<.5?0:1}}
+ return SPR[k]=c}
+let MS;function minerSpr(){if(MS)return MS;const c=document.createElement('canvas');c.width=c.height=32;const x=c.getContext('2d');
+ const R=(a,b,w,h,col)=>{x.fillStyle=col;x.fillRect(a,b,w,h)};
+ R(9,5,14,7,'#ff4b2e');R(9,5,14,2,'#ff9a6b');R(9,10,14,2,'#c22f1a');R(14,7,4,3,'#fff6b0');R(7,11,18,2,'#c22f1a');
+ R(11,13,10,6,'#ffcf9c');R(11,13,10,1,'#ffe3c2');R(13,15,2,2,'#20152f');R(17,15,2,2,'#20152f');R(11,18,10,1,'#e0a674');
+ R(8,19,16,8,'#2d7dff');R(8,19,16,2,'#6fb0ff');R(20,19,4,8,'#1d55c2');R(8,24,16,2,'#8a5a2b');R(14,24,4,2,'#ffd21f');
+ R(10,27,5,4,'#1a3d85');R(17,27,5,4,'#1a3d85');R(9,30,6,2,'#3a2a1a');R(17,30,6,2,'#3a2a1a');
+ R(25,17,2,11,'#8a5a2b');R(22,15,8,3,'#c3cdd9');R(22,15,8,1,'#f0f6ff');
+ return MS=c}
+let sparkT=0;
+function sparks(x,y,t){const c=t<0?'#d9c9b0':t==11?'hsl('+(performance.now()/8%360)+',100%,65%)':shade(ORES[t].c,.45),n=t<0?1:2;for(let i=0;i<n;i++){const a=Math.random()*6.283,s=.8+Math.random()*1.8;PF.push({x:x+(Math.random()-.5)*.6,y:y+(Math.random()-.5)*.6,vx:Math.cos(a)*s,vy:Math.sin(a)*s-.6,l:.25+Math.random()*.25,c:i?'#fff':c})}}
+function cracks(sx,sy,p,t,tx,ty,tm){
+ const rr=rg(tx*7919+ty*104729+13),N=3+Math.floor(p*3),mc=t>=0?(t==11?'hsl('+(tm*120%360)+',100%,70%)':shade(ORES[t].c,.5)):'#e8dcc8',pts=[];
+ for(let b=0;b<N;b++){let x=8,y=8,dx=Math.round(Math.cos(rr()*6.283)),dy=Math.round(Math.sin(rr()*6.283));if(!dx&&!dy)dx=1;const len=Math.floor(p*(5+rr()*5)*1.3)+1;
+  for(let s=0;s<len;s++){if(x>=0&&y>=0&&x<16&&y<16)pts.push([x,y]);x+=dx;y+=dy;if(rr()<.4){if(rr()<.5)x+=rr()<.5?1:-1;else y+=rr()<.5?1:-1}}}
+ g.fillStyle='rgba(8,4,18,.92)';for(const q of pts)g.fillRect(sx+q[0]*4,sy+q[1]*4,4,4);
+ g.globalAlpha=t>=0?.75+.25*Math.sin(tm*20):.35;g.fillStyle=mc;for(const q of pts)g.fillRect(sx+q[0]*4+1,sy+q[1]*4+1,2,2);g.globalAlpha=1}
+let MC,lastDir=1;
+function minerSpr(){
+ const tm=performance.now()/1000;if(face[0])lastDir=face[0];
+ const dg=!!dig,mv=!dg&&Math.hypot(P.x-P.vx,P.y-P.vy)>.04;
+ const c=MC||(MC=document.createElement('canvas'));c.width=c.height=32;const x=c.getContext('2d');
+ if(lastDir<0){x.translate(32,0);x.scale(-1,1)}
+ const R=(a,b,w,h,k)=>{x.fillStyle=k;x.fillRect(Math.round(a),Math.round(b),w,h)};
+ const ph=tm*(mv?15:dg?10:3),s=Math.sin(ph),co=Math.cos(ph),SK='#ffcf9c',ME='#c3cdd9',WD='#8a5a2b';
+ const B=-(mv?Math.round(Math.abs(s)*2):dg?Math.round(Math.abs(s)):Math.round((s+1)/2));
+ const L=mv?Math.round(s*1.6):dg?Math.round(s*1.2):0;
+ const lxL=mv?Math.round(s*3):dg?-2:0,lxR=mv?-Math.round(s*3):dg?2:0,lfL=mv?Math.round(Math.max(0,s)*3):0,lfR=mv?Math.round(Math.max(0,-s)*3):0;
+ R(11+lxL,27,3,Math.max(1,3-lfL),'#1a3d85');R(18+lxR,27,3,Math.max(1,3-lfR),'#1a3d85');
+ R(8+lxL,29-lfL,7,3,'#ff8a1f');R(8+lxL,29-lfL,7,1,'#ffc46b');R(17+lxR,29-lfR,7,3,'#ff8a1f');R(17+lxR,29-lfR,7,1,'#ffc46b');
+ const aL=mv?Math.round(co*4):dg?-1:Math.round(s);
+ R(6+L,20+B+aL,3,6,'#1d55c2');R(5+L,25+B+aL,4,3,SK);
+ R(9+L,19+B,14,8,'#2d7dff');R(9+L,19+B,14,2,'#6fb0ff');R(19+L,19+B,4,8,'#1d55c2');R(9+L,24+B,14,2,WD);R(14+L,24+B,4,2,'#ffd21f');
+ R(10+L,11+B,12,8,SK);R(10+L,11+B,12,1,'#ffe3c2');R(10+L,18+B,12,1,'#e0a674');R(10+L,16+B,2,2,'#ff8fa3');R(20+L,16+B,2,2,'#ff8fa3');
+ if(0){}
+ else{R(11+L,12+B,5,5,'#fff');R(17+L,13+B,4,5,'#fff');const px=0,py=0;R(13+L+px,14+B+py,2,2,'#20152f');R(18+L-px,15+B+py,2,2,'#20152f');
+  R(14+L,18+B,4,1,'#20152f')}
+ const hx=L+(mv?Math.round(co*2):0),hy=B+(mv&&s>.5?-1:0);
+ R(9+hx,4+hy,14,6,'#ff4b2e');R(9+hx,4+hy,14,2,'#ff9a6b');R(7+hx,9+hy,18,2,'#c22f1a');R(14+hx,6+hy,4,3,'#fff6b0');
+ if(dg){const p=(tm*3.2)%1;
+  if(p<.4){R(23+L,2+B,2,11,WD);R(19+L,1+B,9,3,ME);R(19+L,1+B,9,1,'#f0f6ff');R(22+L,13+B,3,7,'#2d7dff');R(22+L,12+B,3,3,SK)}
+  else if(p<.7){R(24+L,22+B,8,2,WD);R(27+L,17+B,3,9,ME);R(22+L,18+B,3,6,'#2d7dff');R(23+L,22+B,3,3,SK)}
+  else{R(24+L,24+B,6,2,WD);R(29+L,19+B,3,10,ME);R(29+L,19+B,1,10,'#f0f6ff');R(22+L,20+B,3,5,'#2d7dff');R(23+L,24+B,3,3,SK)}}
+ else{const aR=mv?-Math.round(co*4):Math.round(-s);R(25+L,12+B+aR,2,12,WD);R(22+L,10+B+aR,8,3,ME);R(22+L,10+B+aR,8,1,'#f0f6ff');R(23+L,21+B+aR,3,6,'#2d7dff');R(23+L,26+B+aR,4,3,SK)}
+ return c}
+$('regen').onclick=()=>{SEED=Math.floor(Math.random()*1e9);T.clear();O.clear();D.clear();best={x:0,y:0};dig=null;dirs=[];P.vx=0;P.vy=0;ret();toast('New mine generated','#35d6ff',1600)};
+const chq=k=>{const l=S.pt[k]||0;return l?Math.min(PT[k].cap||.6,PT[k].p(l-1))*(1+.08*((S.fs&&S.fs.fres)||0)):0};
+const ITEMS=[
+{id:'dyn',n:'Dynamite',t:()=>'Active · clears a 5×5 area',own:()=>has('blast'),lk:'Unlock in the skill tree'},
+{id:'drill',n:'Drill beam',t:()=>'Active · bores 10 tiles ahead',own:()=>has('drillu'),lk:'Unlock in the skill tree'},
+{id:'scan',n:'Ore scanner',t:()=>'Active · reveals a wide radius',own:()=>has('scanu'),lk:'Unlock in the skill tree'},
+{id:'elev',n:'Elevator',t:()=>'Active · jump to your deepest point',own:()=>has('elevu'),lk:'Unlock in the skill tree'}
+].concat(Object.keys(PT).map(k=>({id:k,n:PT[k].n,t:()=>'Charm · '+PT[k].d+' · '+qt(k),own:()=>(S.pt[k]||0)>0,lk:'Buy in the Prunus shop'})));
+function renderTools(){$('tools').innerHTML=S.eq.map((id,i)=>{const a=TOOLS.find(q=>q.id==id);if(a)return'<button data-t="'+id+'">'+(i+1)+' · '+a.n+' <span id="cd-'+id+'"></span></button>';return'<span class="slot">'+(i+1)+' · '+PT[id].n+' '+(PT[id].z?(1.125+.025*((S.pt[id]||1)-1)).toFixed(2)+'x':(chq(id)*100).toFixed(0)+'%')+'</span>'}).join('')||'<span class="hint">Open the inventory (I) and equip up to 4 tools.</span>'}
+function renderInv(){
+ const nm=id=>ITEMS.find(q=>q.id==id).n;
+ $('slots').innerHTML='<div class="slots">'+[0,1,2,3].map(i=>{const id=S.eq[i];return'<div class="sl'+(id?' on':'')+'" data-u="'+(id||'')+'"><b>SLOT '+(i+1)+'</b><span>'+(id?nm(id):'empty')+'</span></div>'}).join('')+'</div>';
+ $('items').innerHTML=ITEMS.map(q=>{const o=q.own(),e=S.eq.includes(q.id);return'<div class="up"><div><strong>'+q.n+'</strong><p>'+q.t()+(o?'':' · '+q.lk)+'</p></div><button data-e="'+q.id+'"'+(!o||(!e&&S.eq.length>=4)?' disabled':'')+'>'+(e?'Unequip':'Equip')+'</button></div>'}).join('')}
+function autoEq(){let c=false;ITEMS.forEach(q=>{if(q.own()&&!S.eqs.includes(q.id)){S.eqs.push(q.id);if(S.eq.length<4)S.eq.push(q.id);c=true}});if(c){save();renderInv();renderTools()}}
+$('inv').onclick=e=>{const b=e.target.closest('[data-e],[data-u]');if(!b)return;const id=b.dataset.e||b.dataset.u;if(!id)return;const i=S.eq.indexOf(id);if(i>=0)S.eq.splice(i,1);else if(S.eq.length<4&&ITEMS.find(q=>q.id==id).own())S.eq.push(id);save();renderInv();renderTools()};
+$('invtab').onclick=()=>$('inv').classList.toggle('open');
+renderInv();
+const WR=()=>S.world==2?[20,43]:S.world?[12,19]:[0,11];
+function LIST(w){return w==2?Array.from({length:24},function(_,i){return 20+i}):w?[12,13,14,44,15,45,16,17,46,18,19,47]:Array.from({length:12},function(_,i){return i})}
+function WL(){const w=S.world|0;WL.m=WL.m||{};return WL.m[w]||(WL.m[w]=LIST(w).slice().reverse())}
+function CL(){return LIST(colTab=='frame'?2:colTab=='moon'?1:0)}
+var SHP=.05,VTP=.004;const shiny=(x,y)=>hh(x,y,99)<SHP,vitra=(x,y)=>hh(x,y,123)<VTP;
+var vTab='shiny';$('vtabs').onclick=function(e){var b=e.target.closest('[data-vt]');if(!b)return;vTab=b.dataset.vt;Array.prototype.forEach.call($('vtabs').children,function(x){x.classList.toggle('on',x.dataset.vt===vTab)});renderSh()};
+function variantGot(t,x,y){const s=shiny(x,y),v=vitra(x,y);if(!s&&!v)return false;if(s)S.shiny[t]=(S.shiny[t]||0)+1;if(v){S.vit=S.vit||{};S.vit[t]=(S.vit[t]||0)+1}toast((s&&v?'✦◆ Shiny Vitrariant ':v?'◆ Vitrariant ':'✦ Shiny ')+ORES[t].n+'! (cannot be sold)',v?'#ff4fd8':'#ffffff',3000);renderSh();return true}
+function renderSh(){var lo=colTab=='frame'?20:colTab=='moon'?12:0,hi=colTab=='frame'?43:colTab=='moon'?19:11,h='',tot=0,sh=(vTab=='vit'?S.vit:S.shiny)||{};for(var i=0;i<ORES.length;i++)tot+=sh[i]||0;for(var ii=0,cl=CL();ii<cl.length;ii++){var i=cl[ii];var o=ORES[i],f=sh[i]||0;h+='<div class="ore'+(f?'':' lock')+'"><i style="background:url('+ico(i)+') center/contain no-repeat'+(f?';filter:brightness('+(vTab=='vit'?2.1:1.7)+') saturate(1.6) '+(vTab=='vit'?'hue-rotate(35deg) ':'')+'drop-shadow(0 0 6px '+(vTab=='vit'?'#ff4fd8':o.c)+')':'')+'"></i><div>'+(f?(vTab=='vit'?'◆ ':'✦ ')+o.n:'???')+'</div><span>'+(vTab=='vit'?'Vitrariant · 1 in 250':'Shiny · 1 in 20')+'</span><em>'+f+'</em></div>'}$('shc').innerHTML=h;$('sht').textContent=tot;$('vh').textContent=vTab=='vit'?'Vitrariants are 1 in 250, can also be Shiny, glow in shifting rainbow light, cannot be sold and are kept forever.':'Shiny ores are 1 in 20, glow brighter, cannot be sold and are kept forever.'}
+const _do2=drawOre2;drawOre2=function(t,sx,sy,tm,tx,ty){_do2(t,sx,sy,tm,tx,ty);const sS=shiny(tx,ty),vV=vitra(tx,ty);if(!sS&&!vV)return;const v=Math.floor(hh(tx,ty,70)*3),fr=t==11?Math.floor(tm*6)%12:0,im=SPR[t+'|'+v+'|'+fr];if(im){g.save();g.globalCompositeOperation='lighter';g.globalAlpha=.6+.25*Math.sin(tm*4+tx);g.shadowColor=vV?'hsl('+(tm*140%360)+',100%,65%)':ORES[t].c;g.shadowBlur=vV?28:16;g.drawImage(im,sx,sy,TS,TS);g.globalAlpha=vV?.6:.35;g.drawImage(im,sx,sy,TS,TS);g.restore()}const a=tm*2+tx;for(let i=0;i<(vV?5:2);i++){g.fillStyle=vV?'hsl('+((tm*140+i*72)%360)+',100%,70%)':'#fff';const q=a+i*(vV?1.3:3.1);g.fillRect(Math.round((sx+TS/2+Math.cos(q)*20)/4)*4,Math.round((sy+TS/2+Math.sin(q*1.3)*20)/4)*4,4,4)}};
+const FT={forge:['fforge',2],grav:['fgrav',2],lamp:['flamp',1],pock:['fpock',2],luck:['fluck',2],prunus:['fbloom',2]};
+const LS=k=>((S.ls&&S.ls[k])||0)+(FT[k]?FT[k][1]*((S.fs&&S.fs[FT[k][0]])||0):0);
+const LSH={
+forge:{n:'Moon Forge',d:'+20% Allores from sales',b:2,g:1.55,m:10},
+grav:{n:'Low Gravity',d:'+10% dig speed and +8% move speed',b:2,g:1.5,m:10},
+lamp:{n:'Earthshine Lantern',d:'+1 light radius',b:3,g:1.7,m:5},
+pock:{n:'Helium Pockets',d:'+8 bag capacity',b:2,g:1.45,m:10},
+luck:{n:'Selenite Luck',d:'+12% rare ore odds',b:4,g:1.6,m:10},
+prunus:{n:'Moonbloom',d:'+25% Prunus from drops',b:3,g:1.6,m:6},
+head:{n:'Lunar Head Start',d:'Runs begin with Pickaxe, Backpack and Lantern at Lv 3 per level',b:6,g:2.2,m:3}};
+function renderLS(){$('lshop').innerHTML=Object.keys(LSH).map(k=>{const t=LSH[k],l=LS(k),c=Math.ceil(t.b*Math.pow(t.g,l)),mx=l>=t.m;return'<div class="up"><div><strong>'+t.n+' · Lv '+l+'</strong><p>'+t.d+'</p></div><button data-l="'+k+'"'+(mx||S.lc<c?' disabled':'')+'>'+(mx?'Max':c+' Lunar Cores')+'</button></div>'}).join('')}
+$('lshop').onclick=e=>{const k=e.target.dataset&&e.target.dataset.l;if(!k)return;const t=LSH[k],l=LS(k),c=Math.ceil(t.b*Math.pow(t.g,l));if(l>=t.m||S.lc<c)return;S.lc-=c;S.ls[k]=l+1;save();renderLS();reveal()};
+const FSH={
+fforge:{n:'Frame Forge',d:'+40% Allores from sales',b:3,g:1.55,m:10},
+fgrav:{n:'Vitra Drive',d:'+20% dig speed and +16% move speed',b:3,g:1.5,m:10},
+flamp:{n:'Prism Lantern',d:'+1 light radius',b:4,g:1.7,m:5},
+fpock:{n:'Lattice Pockets',d:'+16 bag capacity',b:3,g:1.45,m:10},
+fluck:{n:'Fractal Luck',d:'+24% rare ore odds',b:5,g:1.6,m:10},
+fbloom:{n:'Frame Bloom',d:'+50% Prunus from drops',b:4,g:1.6,m:6},
+fres:{n:'Resonance',d:'+8% charm trigger chance per level',b:6,g:1.7,m:8},
+fhead:{n:'Frame Head Start',d:'Runs begin with Pickaxe, Backpack and Lantern at Lv 5 per level',b:10,g:2.2,m:3}};
+function renderFS(){$('fshop').innerHTML=Object.keys(FSH).map(k=>{const t=FSH[k],l=(S.fs&&S.fs[k])||0,c=Math.ceil(t.b*Math.pow(t.g,l)),mx=l>=t.m;return'<div class="up"><div><strong>'+t.n+' · Lv '+l+'</strong><p>'+t.d+'</p></div><button data-f="'+k+'"'+(mx||S.fc<c?' disabled':'')+'>'+(mx?'Max':c+' Frame Shards')+'</button></div>'}).join('')}
+$('fshop').onclick=e=>{const k=e.target.dataset&&e.target.dataset.f;if(!k)return;const t=FSH[k],l=S.fs[k]||0,c=Math.ceil(t.b*Math.pow(t.g,l));if(l>=t.m||S.fc<c)return;S.fc-=c;S.fs[k]=l+1;save();renderFS();reveal()};
+function applyWorld(){$('lpanel').style.display=S.world==1?'':'none';$('fpanel').style.display=S.world==2?'':'none';document.body.classList.toggle('moon',!!S.world);document.body.classList.toggle('frame',S.world==2)}
+function travel(tw){if(tw==null&&!S.world&&S.prest<10)return;S.world=tw!=null?tw:(S.world?0:1);SEED=Math.floor(Math.random()*1e9);T.clear();O.clear();D.clear();best={x:0,y:0};dig=null;dirs=[];P.vx=0;P.vy=0;for(const k in cds)cds[k]=0;ret();applyWorld();renderLS();renderFS();renderShop();renderCol();save();toast(S.world==2?'Welcome to the Vitra Frame!':S.world?'Welcome to the Moon!':'Back on Earth','#cfd8ff',2400)}
+const _da=drawArt;drawArt=function(x,t,v){return _da(x,(t==12||t==13)?t-11:t,v+(t>=12?5:0))};
+applyWorld();renderLS();renderFS();
+const PF=[],FL=[];
+function fx(x,y,c,n){for(let i=0;i<n;i++){const a=Math.random()*6.28,s=1.5+Math.random()*3;PF.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:.35+Math.random()*.3,c})}}
+function boom(x,y,c,r){for(let dx=-r;dx<=r;dx++)for(let dy=-r;dy<=r;dy++){FL.push({x:x+dx,y:y+dy,l:.2+Math.random()*.1});fx(x+dx,y+dy,c,3)}}
+function updFx(dt){for(const p of PF){p.x+=p.vx*dt;p.y+=p.vy*dt;p.l-=dt}for(const f of FL)f.l-=dt;for(let i=PF.length-1;i>=0;i--)if(PF[i].l<=0)PF.splice(i,1);for(let i=FL.length-1;i>=0;i--)if(FL[i].l<=0)FL.splice(i,1)}
+function area(x,y,r){for(let dx=-r;dx<=r;dx++)for(let dy=-r;dy<=r;dy++)breakAt(x+dx,y+dy)}
+function procs(x,y,d){
+ if(Math.random()<.04){S.prunus+=Math.round((1+Math.floor(y/40))*(1+.25*LS('prunus')));fx(x,y,'#ff9ecb',5)}
+ if(Math.random()<ch('bomb')){area(x,y,1);boom(x,y,'#ff8a3d',1)}
+ if(Math.random()<ch('quake')){for(let dx=-3;dx<=2;dx++)for(let dy=0;dy<=1;dy++){breakAt(x+dx,y+dy);FL.push({x:x+dx,y:y+dy,l:.2+Math.random()*.1});fx(x+dx,y+dy,'#ffd23f',3)}}
+ if(Math.random()<ch('star')){const c=[[0,0]];for(let i=1;i<=3;i++)c.push([i,0],[-i,0],[0,i],[0,-i]);for(let i=1;i<=2;i++)c.push([i,i],[-i,i],[i,-i],[-i,-i]);c.forEach(q=>{breakAt(P.x+q[0],P.y+q[1]);FL.push({x:P.x+q[0],y:P.y+q[1],l:.2+Math.random()*.1});fx(P.x+q[0],P.y+q[1],'#ffe14d',3)})}
+ if(Math.random()<ch('rip')){for(let i=1;i<=6;i++){breakAt(x+d[0]*i,y+d[1]*i);fx(x+d[0]*i,y+d[1]*i,'#7fd6ff',2)}}
+ if(Math.random()<ch('nova')){area(x,y,2);boom(x,y,'#ff7be8',2)}
+ if(Math.random()<ch('lance')){for(let i=1;i<=12;i++){breakAt(x+d[0]*i,y+d[1]*i);fx(x+d[0]*i,y+d[1]*i,'#ff9bf0',2)}}
+ if(Math.random()<ch('rift')){for(let i=1;i<=8;i++)[[i,0],[-i,0],[0,i],[0,-i]].forEach(q=>{breakAt(x+q[0],y+q[1]);fx(x+q[0],y+q[1],'#c58bff',2)})}
+ if(Math.random()<ch('halo')){for(let a=-4;a<=4;a++)[[a,-4],[a,4],[-4,a],[4,a]].forEach(q=>{breakAt(P.x+q[0],P.y+q[1]);fx(P.x+q[0],P.y+q[1],'#9ffcff',2)})}
+ if(Math.random()<ch('bloom')){S.prunus+=2+Math.floor(y/30);fx(x,y,'#ff9ecb',12)}
+}
+function renderShop(){$('shop').innerHTML=Object.keys(PT).filter(k=>!PT[k].w||PT[k].w==S.world).map(k=>{const t=PT[k],l=S.pt[k]||0,mx=l>=t.m,c=Math.ceil(t.b*Math.pow(t.g,l));return'<div class="up"><div><strong>'+t.n+' · Lv '+l+'</strong><p>'+t.d+' · '+(l?qt(k)+(S.eq.includes(k)?'':' · not equipped'):'not owned')+'</p></div><button data-p="'+k+'"'+(mx||S.prunus<c?' disabled':'')+'>'+(mx?'Max':fmt(c)+' Prunus')+'</button></div>'}).join('')}
+$('shop').onclick=e=>{const k=e.target.dataset&&e.target.dataset.p;if(!k)return;const t=PT[k],l=S.pt[k]||0,c=Math.ceil(t.b*Math.pow(t.g,l));if(l>=t.m||S.prunus<c)return;S.prunus-=c;S.pt[k]=l+1;save();renderShop()};
+renderPres();renderTools();renderTree();renderUp();renderCol();renderShop();reveal();
+/* ===== CONSOLE CHEATS (devtools → Console) ===== */
+function cheatRefresh(){renderUp();renderTree();renderTools();renderShop();renderInv();renderCol();renderLS();renderFS();renderSh();reveal()}
+function giveAllores(n){S.al+=Math.max(0,Math.floor(n||0));S.earned+=Math.max(0,Math.floor(n||0));cheatRefresh();return'Allores: '+fmt(S.al)}
+function givePrestiges(n){S.prest+=Math.max(0,Math.floor(n||0));cheatRefresh();return'Prestiges: '+S.prest}
+function giveCores(n){S.cores+=Math.max(0,Math.floor(n||0));cheatRefresh();return'Deep Cores: '+S.cores}
+function giveLunarCores(n){S.lc+=Math.max(0,Math.floor(n||0));cheatRefresh();return'Lunar Cores: '+S.lc}
+function givePrunus(n){S.prunus+=Math.max(0,Math.floor(n||0));cheatRefresh();return'Prunus: '+fmt(S.prunus)}
+function maxUpgrades(){for(const k in UP)S.up[k]=UP[k].m;cheatRefresh();return'All upgrades maxed'}
+function unlockTree(){TREE.forEach(n=>S.tree[n.id]=1);cheatRefresh();return'Skill tree fully unlocked'}
+function maxCharms(){for(const k in PT)S.pt[k]=PT[k].m;cheatRefresh();return'All charms maxed'}
+function collectAll(){ORES.forEach((o,i)=>S.found[i]=99);renderCol();return'Ore collection complete'}
+function fillBag(t){const i=(t==null?0:Math.max(0,Math.min(ORES.length-1,Math.floor(t))));const n=cap()-bagN();if(n>0)bag[i]+=n;return'Bag filled: '+bagN()+'/'+cap()}
+function goDepth(n){n=Math.max(0,Math.floor(n||0));P.x=0;P.y=n;dig=null;arrive();return'Now at depth '+P.y}
+function unlockMoon(){S.prest=Math.max(S.prest,10);cheatRefresh();return'Moon travel unlocked (10+ prestiges)'}
+function moon(){if(!S.world&&S.prest<10)S.prest=10;S.world=S.world?0:1;SEED=Math.floor(Math.random()*1e9);T.clear();O.clear();D.clear();best={x:0,y:0};dig=null;dirs=[];P.vx=0;P.vy=0;for(const k in cds)cds[k]=0;ret();applyWorld();renderLS();renderCol();cheatRefresh();return S.world?'Now on the Moon':'Back on Earth'}
+function cheatGod(){maxUpgrades();unlockTree();maxCharms();S.prest+=10;cheatRefresh();return'God mode: all upgrades, tree, charms +10 prestiges'}
+/* ================================================ */
+function oreIdx(t){return typeof t=='string'?ORES.findIndex(o=>o.n.toLowerCase()==t.toLowerCase()):t|0}
+function giveFrameShards(n){S.fc+=Math.max(0,Math.floor(n||0));cheatRefresh();return'Frame Shards: '+S.fc}
+function giveFramePrestiges(n){S.fprest+=Math.max(0,Math.floor(n||0));cheatRefresh();return'Frame prestiges: '+S.fprest}
+function giveLunarPrestiges(n){S.lprest+=Math.max(0,Math.floor(n||0));cheatRefresh();return'Lunar prestiges: '+S.lprest}
+function unlockFrame(){S.prest=Math.max(S.prest,10);S.lprest=Math.max(S.lprest,10);cheatRefresh();return'Vitra Frame travel unlocked (10+ lunar prestiges)'}
+function frame(){S.prest=Math.max(S.prest,10);S.lprest=Math.max(S.lprest,10);travel(2);cheatRefresh();return'Now in the Vitra Frame'}
+function earth(){travel(0);cheatRefresh();return'Back on Earth'}
+function maxMoonShop(){for(const k in LSH)S.ls[k]=LSH[k].m;cheatRefresh();return'Lunar shop maxed'}
+function maxFrameShop(){for(const k in FSH)S.fs[k]=FSH[k].m;cheatRefresh();return'Frame shop maxed'}
+function giveShiny(t,n){const i=oreIdx(t);if(!ORES[i])return'Unknown ore: use an index 0-'+(ORES.length-1)+' or a name';S.shiny[i]=(S.shiny[i]||0)+Math.max(1,(n|0)||1);S.found[i]=S.found[i]||1;cheatRefresh();return'Shiny '+ORES[i].n+': '+S.shiny[i]}
+function giveVitrariant(t,n){const i=oreIdx(t);if(!ORES[i])return'Unknown ore: use an index 0-'+(ORES.length-1)+' or a name';S.vit=S.vit||{};S.vit[i]=(S.vit[i]||0)+Math.max(1,(n|0)||1);S.found[i]=S.found[i]||1;cheatRefresh();return'Vitrariant '+ORES[i].n+': '+S.vit[i]}
+function allShinies(n){ORES.forEach((o,i)=>{S.shiny[i]=(S.shiny[i]||0)+Math.max(1,(n|0)||1);S.found[i]=S.found[i]||1});cheatRefresh();return'Gave every ore a Shiny variant'}
+function allVitrariants(n){S.vit=S.vit||{};ORES.forEach((o,i)=>{S.vit[i]=(S.vit[i]||0)+Math.max(1,(n|0)||1);S.found[i]=S.found[i]||1});cheatRefresh();return'Gave every ore a Vitrariant variant'}
+function shinyOdds(n){SHP=1/Math.max(1,+n||20);return'Shiny odds: 1 in '+Math.round(1/SHP)+' (resets on reload)'}
+function vitrariantOdds(n){VTP=1/Math.max(1,+n||250);return'Vitrariant odds: 1 in '+Math.round(1/VTP)+' (resets on reload)'}
+function resetCooldowns(){for(const k in cds)cds[k]=0;return'Tool cooldowns cleared'}
+function maxAll(){maxUpgrades();unlockTree();maxCharms();maxMoonShop();maxFrameShop();collectAll();cheatRefresh();return'Everything maxed'}
+function giveEverything(n){n=Math.max(0,Math.floor(n||0));S.al+=n;S.earned+=n;S.cores+=n;S.lc+=n;S.fc+=n;S.prunus+=n;cheatRefresh();return'Gave '+fmt(n)+' of every currency'}
+function cheats(){const l=['giveAllores(n)','givePrunus(n)','giveCores(n)','giveLunarCores(n)','giveFrameShards(n)','givePrestiges(n)','giveLunarPrestiges(n)','giveFramePrestiges(n)','giveEverything(n)','maxUpgrades()','unlockTree()','maxCharms()','maxMoonShop()','maxFrameShop()','maxAll()','collectAll()','fillBag(oreIndex)','goDepth(n)','resetCooldowns()','unlockMoon()','unlockFrame()','moon()','frame()','earth()','giveShiny(oreNameOrIndex,n)','giveVitrariant(oreNameOrIndex,n)','allShinies(n)','allVitrariants(n)','shinyOdds(n)','vitrariantOdds(n)','cheatGod()'];console.log(l.join('\n'));return l.length+' cheats listed above'}
+/* ===== START ===== */
+(function(){bag=ORES.map(function(){return 0});T.clear();O.clear();D.clear();best={x:0,y:0};dig=null;dirs=[];P.vx=0;P.vy=0;for(var k in cds)cds[k]=0;
+applyWorld();renderPres();renderTools();renderTree();renderUp();renderCol();renderShop();renderInv();renderLS();ret()})();
+addEventListener('beforeunload',save);
+$('wok').onclick=function(){$('warn').style.display='none';dirs=[]};setTimeout(function(){try{$('wok').focus()}catch(e){}},0);
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
